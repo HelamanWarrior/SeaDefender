@@ -16,6 +16,9 @@ onready var texture_size_half = texture_size * 0.5
 onready var shoot_point = $ShootPoint
 onready var reload_timer = $ReloadTimer
 
+func _ready():
+	Global.player = self
+
 func _physics_process(_delta) -> void:
 	movement()
 	rotate_to_input_movement()
@@ -119,3 +122,6 @@ func control_animation():
 
 func _on_ReloadTimer_timeout():
 	can_shoot = true
+
+func _exit_tree():
+	Global.player = null

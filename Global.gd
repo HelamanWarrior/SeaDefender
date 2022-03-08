@@ -4,6 +4,7 @@ const game_size := Vector2(256, 144)
 
 const freeze_ms = 30
 
+var player = null
 var difficulty = 1
 var numb_collected_people = 0 setget numb_collected_people_set
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Font3.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Shark.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Person.tscn" type="PackedScene" id=7]
 [ext_resource path="res://PeopleCount.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Camera.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
@@ -20,6 +21,11 @@ outline_color = Color( 0.12549, 0.0823529, 0.2, 1 )
 font_data = ExtResource( 3 )
 
 [node name="Prototype" type="Node2D"]
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 128, 70 )
+current = true
+script = ExtResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 124, 64 )
