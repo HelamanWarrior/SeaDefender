@@ -90,11 +90,11 @@ func is_facing_right():
 	return !flip_h
 
 func clamp_position():
-	var min_position_x: float = texture_size_half.x
-	var max_position_x: float = Global.game_size.x - texture_size_half.x
+	var min_position_x = texture_size_half.x
+	var max_position_x = Global.game_size.x - texture_size_half.x
 	
-	var min_position_y: float = 35 + texture_size_half.y
-	var max_position_y: float = 205 - texture_size_half.y
+	var min_position_y = 35 + texture_size_half.y
+	var max_position_y = 205 - texture_size_half.y
 	
 	var target_position := Vector2.ZERO
 	target_position.x = clamp(global_position.x, min_position_x, max_position_x)
