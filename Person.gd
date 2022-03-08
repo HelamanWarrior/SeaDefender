@@ -63,3 +63,6 @@ func _on_Hitbox_area_entered(area):
 		
 		update_applied_speed()
 		animation_player.playback_speed = applied_speed / default_speed
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()

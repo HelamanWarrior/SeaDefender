@@ -23,7 +23,6 @@ func _on_SpawnTime_timeout():
 	
 	if can_spawn:
 		var rand = round(rand_range(0, 4))
-		print("AA")
 		if rand == 0: #Right
 			spawn_enemy_algo(left_node)
 		elif rand == 1: #Left
