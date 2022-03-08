@@ -153,7 +153,7 @@ anims/RESET = SubResource( 2 )
 anims/hit = SubResource( 3 )
 anims/idle = SubResource( 4 )
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["Enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 visible = false

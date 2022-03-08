@@ -21,18 +21,18 @@ func _physics_process(_delta) -> void:
 	rotate_to_input_movement()
 	clamp_position()
 	control_shooting()
-	control_animation()
 
 func movement() -> void:
 	var delta = get_physics_process_delta_time()
+	control_animation()
+	
+	if !is_shooting:
+		flip_direction_to_movement()
 	
 	movement_input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	movement_input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	
 	movement_input = movement_input.normalized()
-	
-	if movement_input.x != 0:
-		flip_h = movement_input.x < 0
 	
 	# TODO: Multiply speed with Global difficulty
 	velocity = lerp(velocity, movement_input * speed, 0.25)
@@ -101,6 +101,18 @@ func clamp_position():
 	target_position.y = clamp(global_position.y, min_position_y, max_position_y)
 	
 	global_position = lerp(global_position, target_position, 0.3)
+
+func flip_direction_to_movement():
+	if movement_input.x > 0:
+		if flip_h: #Player just turned
+			scale = Vector2(0.6, 1.4)
+		
+		flip_h = false
+	elif movement_input.x < 0:
+		if !flip_h: #Player just turned
+			scale = Vector2(0.6, 1.4)
+		
+		flip_h = true
 
 func control_animation():
 	scale = lerp(scale, Vector2.ONE, 0.1)

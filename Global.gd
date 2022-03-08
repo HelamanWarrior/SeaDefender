@@ -2,7 +2,13 @@ extends Node
 
 const game_size := Vector2(256, 144)
 
-var freeze_ms = 30
+const freeze_ms = 30
+
+var difficulty = 1
+var numb_collected_people = 0
+
+func _ready():
+	randomize()
 
 func instance_node(node: Object, location: Vector2) -> Object:
 	var node_instance = node.instance()
