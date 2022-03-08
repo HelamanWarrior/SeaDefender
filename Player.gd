@@ -16,7 +16,7 @@ onready var texture_size_half = texture_size * 0.5
 onready var shoot_point = $ShootPoint
 onready var reload_timer = $ReloadTimer
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	movement()
 	rotate_to_input_movement()
 	clamp_position()
@@ -46,7 +46,7 @@ func control_shooting():
 		if can_shoot:
 			#SoundManager.play_sound(SoundManager.player_shoot, rand_range(0.8, 1.2))
 			
-			for i in range(4):
+			for _i in range(4):
 				var location = shoot_point.global_position
 				
 				if !is_facing_right():
