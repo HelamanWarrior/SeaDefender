@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Font3.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://OxygenBarUnder.png" type="Texture" id=5]
 [ext_resource path="res://Shark.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Person.tscn" type="PackedScene" id=7]
+[ext_resource path="res://PeopleCount.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
@@ -88,6 +89,9 @@ texture_progress = ExtResource( 4 )
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_right = 4
+
+[node name="PeopleCount" parent="UserInterface" instance=ExtResource( 8 )]
+position = Vector2( 11, 9 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_top = 43.0
