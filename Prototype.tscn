@@ -123,7 +123,7 @@ script = ExtResource( 11 )
 material = ExtResource( 19 )
 position = Vector2( 117.375, 43 )
 scale = Vector2( 0.75, 1 )
-z_index = -10
+z_index = 10
 mesh = SubResource( 9 )
 texture = ExtResource( 20 )
 

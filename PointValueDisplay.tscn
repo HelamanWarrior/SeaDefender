@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Font3.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://PointValueDisplay.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 5
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "PopUp"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5 ),
+"transitions": PoolRealArray( 0.5, 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "destroy"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+
+[node name="PointValueDisplay" type="Node2D"]
+scale = Vector2( 1e-05, 1e-05 )
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -19.0
+margin_top = -7.0
+margin_right = 21.0
+margin_bottom = 7.0
+custom_colors/font_color_shadow = Color( 0.12549, 0.0823529, 0.2, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 1 )
+text = "100"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "PopUp"
+anims/PopUp = SubResource( 2 )
+anims/RESET = SubResource( 3 )

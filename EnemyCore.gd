@@ -11,6 +11,8 @@ export(int) var points = 25
 var current_hp = max_hp
 var random_offset = rand_range(0, 10)
 
+var point_value_display = preload("res://PointValueDisplay.tscn")
+
 onready var animation_player = find_node("AnimationPlayer")
 
 func _ready():
@@ -50,8 +52,8 @@ func death():
 	
 	#SoundManager.play_sound(SoundManager.shark_death, rand_range(0.8, 1.2))
 	
-	#var points_instance = Global.instance_node(point_value_display, global_position)
-	#points_instance.value = points
+	var points_instance = Global.instance_node(point_value_display, global_position)
+	points_instance.value = points
 	
 	#if blood != null:
 	#	Global.instance_node(blood, global_position)
