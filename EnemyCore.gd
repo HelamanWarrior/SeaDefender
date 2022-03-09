@@ -16,6 +16,8 @@ onready var animation_player = find_node("AnimationPlayer")
 func _ready():
 	GameEvent.connect("kill_all_enemies", self, "death")
 	GameEvent.connect("pause_enemies", self, "pause")
+	
+	points += 10 * Global.difficulty_steps
 
 func _on_Hitbox_area_entered(area):
 	if area.is_in_group("EnemyDamager"):

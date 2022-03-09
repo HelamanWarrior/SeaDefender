@@ -64,7 +64,7 @@ func movement(delta) -> void:
 	movement_input = movement_input.normalized()
 	
 	# TODO: Multiply speed with Global difficulty
-	velocity = lerp(velocity, movement_input * speed, 0.25)
+	velocity = lerp(velocity, movement_input * speed * Global.difficulty, 0.25)
 	
 	global_position += velocity * delta
 
@@ -150,6 +150,7 @@ func oxygen_refuel():
 	
 	if oxygen_level > 99:
 		GameEvent.emit_signal("pause_enemies", false)
+		# TODO: Make this only happen once all the people are on board
 		Global.difficulty *= 1.1
 		Global.difficulty_steps += 1
 		texture = default_texture
