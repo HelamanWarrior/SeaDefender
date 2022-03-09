@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Font3.ttf" type="DynamicFontData" id=2]
@@ -16,31 +16,23 @@
 [ext_resource path="res://dark_water_1.png" type="Texture" id=14]
 [ext_resource path="res://dark_water_2.png" type="Texture" id=15]
 [ext_resource path="res://SandBottom.png" type="Texture" id=16]
+[ext_resource path="res://PointsLabel.gd" type="Script" id=17]
+[ext_resource path="res://shore_line_2.png" type="Texture" id=18]
+[ext_resource path="res://WaterShader.tres" type="Material" id=19]
+[ext_resource path="res://shore_line.png" type="Texture" id=20]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 131, 10 )
 
-[sub_resource type="Shader" id=4]
-code = "shader_type canvas_item;
-render_mode blend_mix;
+[sub_resource type="CubeMesh" id=9]
+size = Vector3( 400, 4, 1 )
+subdivide_width = 8
+subdivide_height = 1
 
-uniform vec2 strength = vec2(5.0, 5.0);
-uniform float speed = 5.0;
-
-float rand(vec2 coord){
-	return fract(sin(dot(coord, vec2(12.9898, 78.233)))* 43758.5453123);
-}
-
-void vertex() {
-	float random = rand(VERTEX);
-	VERTEX.x += cos(TIME + VERTEX.y * speed + random) * strength.x;
-	VERTEX.y += sin(TIME + VERTEX.x * speed + random) * strength.y;
-}"
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
-shader_param/strength = Vector2( 2, 2 )
-shader_param/speed = 1.0
+[sub_resource type="CubeMesh" id=10]
+size = Vector3( 400, 35, 1 )
+subdivide_width = 8
+subdivide_height = 1
 
 [sub_resource type="CubeMesh" id=6]
 size = Vector3( 400, 170, 1 )
@@ -79,6 +71,7 @@ position = Vector2( 129, 43 )
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OxygenZone"]
+visible = false
 shape = SubResource( 3 )
 
 [node name="EnemySpawner" type="Node2D" parent="."]
@@ -126,27 +119,44 @@ script = ExtResource( 11 )
 
 [node name="Environment" type="Node2D" parent="."]
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Environment"]
-material = SubResource( 5 )
-position = Vector2( 117.375, 129 )
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="Environment"]
+material = ExtResource( 19 )
+position = Vector2( 117.375, 43 )
+scale = Vector2( 0.75, 1 )
+z_index = -10
+mesh = SubResource( 9 )
+texture = ExtResource( 20 )
+
+[node name="MeshInstance2D5" type="MeshInstance2D" parent="Environment"]
+material = ExtResource( 19 )
+position = Vector2( 117.375, 59 )
 scale = Vector2( 0.75, 1 )
 z_index = -11
+z_as_relative = false
+mesh = SubResource( 10 )
+texture = ExtResource( 18 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Environment"]
+material = ExtResource( 19 )
+position = Vector2( 117.375, 129 )
+scale = Vector2( 0.75, 1 )
+z_index = -12
 mesh = SubResource( 6 )
 texture = ExtResource( 13 )
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="Environment"]
-material = SubResource( 5 )
+material = ExtResource( 19 )
 position = Vector2( 117.375, 102 )
 scale = Vector2( 0.75, 1 )
-z_index = -12
+z_index = -13
 mesh = SubResource( 7 )
 texture = ExtResource( 14 )
 
 [node name="MeshInstance2D3" type="MeshInstance2D" parent="Environment"]
-material = SubResource( 5 )
+material = ExtResource( 19 )
 position = Vector2( 117.375, 147 )
 scale = Vector2( 0.75, 1 )
-z_index = -13
+z_index = -14
 mesh = SubResource( 8 )
 texture = ExtResource( 15 )
 
@@ -177,6 +187,7 @@ custom_constants/shadow_as_outline = 1
 custom_fonts/font = SubResource( 1 )
 text = "100"
 align = 1
+script = ExtResource( 17 )
 
 [node name="OxygenLabel" type="Label" parent="UserInterface/Control"]
 anchor_top = 1.0
@@ -220,11 +231,6 @@ script = ExtResource( 12 )
 
 [node name="PeopleCount" parent="UserInterface" instance=ExtResource( 8 )]
 position = Vector2( 11, 9 )
-
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_top = 43.0
-margin_right = 256.0
-margin_bottom = 44.0
 
 [connection signal="area_entered" from="OxygenZone" to="OxygenZone" method="_on_OxygenZone_area_entered"]
 [connection signal="timeout" from="EnemySpawner/SpawnTime" to="EnemySpawner" method="_on_SpawnTime_timeout"]
