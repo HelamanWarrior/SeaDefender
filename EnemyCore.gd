@@ -14,8 +14,8 @@ var random_offset = rand_range(0, 10)
 onready var animation_player = find_node("AnimationPlayer")
 
 func _ready():
-	GameEvent.connect("kill_all_enemies", self, "_death")
-	GameEvent.connect("pause_enemies", self, "_pause")
+	GameEvent.connect("kill_all_enemies", self, "death")
+	GameEvent.connect("pause_enemies", self, "pause")
 
 func _on_Hitbox_area_entered(area):
 	if area.is_in_group("EnemyDamager"):
@@ -66,6 +66,12 @@ func death():
 func control_animation():
 	scale = lerp(scale, Vector2.ONE, 0.1)
 	rotation_degrees = lerp(rotation_degrees, 0, 0.1)
+
+func pause(pause):
+	if pause:
+		current_state = states.PAUSE
+	else:
+		current_state = states.DEFAULT
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

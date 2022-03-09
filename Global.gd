@@ -8,6 +8,7 @@ var player = null
 var people_container = null
 
 var difficulty = 1
+var difficulty_steps = 0
 var numb_collected_people = 0 setget numb_collected_people_set
 
 func _ready():

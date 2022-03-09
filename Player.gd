@@ -1,5 +1,9 @@
 extends Sprite
 
+enum states {DEFAULT, REFUEL, PEOPLE_REFUEL}
+
+var current_state = states.DEFAULT
+
 var speed = Vector2(125, 90)
 var acc = 400
 var rotation_strength = 15
@@ -8,26 +12,48 @@ var movement_input = Vector2()
 var velocity = Vector2()
 var is_shooting = false
 var can_shoot = true
+var oxygen_level = 100
+var points = 0
 
 var bullet = preload("res://PlayerBullet.tscn")
+var flash_texture = preload("res://PlayerFlash.png")
 
+onready var default_texture = texture
 onready var texture_size = Vector2(texture.get_width() / hframes, texture.get_height())
 onready var texture_size_half = texture_size * 0.5
 onready var shoot_point = $ShootPoint
 onready var reload_timer = $ReloadTimer
+onready var decrease_people_timer = $DecreasePeopleTimer
 
 func _ready():
 	Global.player = self
+	
+	GameEvent.connect("oxygen_refuel", self, "oxygen_refuel_state_change")
+	GameEvent.connect("add_to_score", self, "add_to_score")
+	GameEvent.connect("people_refuel", self, "people_refuel")
+	GameEvent.connect("less_people_refuel", self, "less_people_refuel")
+	GameEvent.connect("kill_player", self, "death")
 
-func _physics_process(_delta) -> void:
-	movement()
-	rotate_to_input_movement()
+func _physics_process(delta) -> void:
 	clamp_position()
-	control_shooting()
+	
+	match current_state:
+		states.DEFAULT:
+			movement(delta)
+			control_shooting()
+			lose_oxygen(delta)
+		states.REFUEL:
+			move_to_refuel()
+			reset_animation()
+			oxygen_refuel()
+		states.PEOPLE_REFUEL:
+			move_to_refuel()
+			reset_animation()
+			people_refuel()
 
-func movement() -> void:
-	var delta = get_physics_process_delta_time()
+func movement(delta) -> void:
 	control_animation()
+	rotate_to_input_movement()
 	
 	if !is_shooting:
 		flip_direction_to_movement()
@@ -117,11 +143,62 @@ func flip_direction_to_movement():
 		
 		flip_h = true
 
+func oxygen_refuel():
+	current_state = states.REFUEL
+	oxygen_level = move_toward(oxygen_level, 100, 0.8)
+	GameEvent.emit_signal("update_oxygen_ui", oxygen_level)
+	
+	if oxygen_level > 99:
+		GameEvent.emit_signal("pause_enemies", false)
+		Global.difficulty *= 1.1
+		Global.difficulty_steps += 1
+		texture = default_texture
+		current_state = states.DEFAULT
+
 func control_animation():
 	scale = lerp(scale, Vector2.ONE, 0.1)
 
 func _on_ReloadTimer_timeout():
 	can_shoot = true
+
+func lose_oxygen(delta):
+	oxygen_level -= delta * 3
+	GameEvent.emit_signal("update_oxygen_ui", oxygen_level)
+
+func move_to_refuel():
+	global_position.y = lerp(global_position.y, 23, 0.05)
+
+func reset_animation():
+	rotation_degrees = lerp(rotation_degrees, 0, 0.1)
+	scale = lerp(scale, Vector2.ONE, 0.1)
+
+func people_refuel():
+	current_state = states.PEOPLE_REFUEL
+	texture = flash_texture
+	
+	if decrease_people_timer.time_left == 0:
+		decrease_people_timer.start()
+		GameEvent.emit_signal("pause_enemies", true)
+			
+		if Global.numb_collected_people <= 0:
+			GameEvent.emit_signal("kill_all_enemies")
+			oxygen_refuel()
+
+func less_people_refuel():
+	current_state = states.PEOPLE_REFUEL
+	texture = flash_texture
+	
+	Global.numb_collected_people -= 1
+	GameEvent.emit_signal("pause_enemies", true)
+	GameEvent.emit_signal("kill_all_enemies")
+	oxygen_refuel()
+
+func add_to_score(amount):
+	points += amount
+
+func _on_DecreasePeopleTimer_timeout():
+	if Global.numb_collected_people > 0:
+		Global.numb_collected_people -= 1
 
 func _exit_tree():
 	Global.player = null

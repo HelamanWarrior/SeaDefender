@@ -63,4 +63,9 @@ anims/idle = SubResource( 3 )
 wait_time = 0.15
 one_shot = true
 
+[node name="DecreasePeopleTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
+[connection signal="timeout" from="DecreasePeopleTimer" to="." method="_on_DecreasePeopleTimer_timeout"]

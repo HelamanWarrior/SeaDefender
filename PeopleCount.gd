@@ -31,4 +31,4 @@ func instance_person():
 
 func kill_the_children():
 	for child in get_children():
-		child._play_destroy()
+		child.play_destroy()
