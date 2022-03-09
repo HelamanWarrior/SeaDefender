@@ -150,9 +150,8 @@ func oxygen_refuel():
 	
 	if oxygen_level > 99:
 		GameEvent.emit_signal("pause_enemies", false)
-		# TODO: Make this only happen once all the people are on board
 		Global.difficulty *= 1.1
-		Global.difficulty_steps += 1
+		
 		texture = default_texture
 		current_state = states.DEFAULT
 
@@ -176,6 +175,11 @@ func reset_animation():
 func people_refuel():
 	current_state = states.PEOPLE_REFUEL
 	texture = flash_texture
+	
+	# Point award on enemies is only increased if the player refuels with all the people
+	if Global.numb_collected_people >= 7:
+		Global.difficulty_steps += 1
+		print("Increased the value of points")
 	
 	if decrease_people_timer.time_left == 0:
 		decrease_people_timer.start()
