@@ -6,6 +6,8 @@ export(int) var speed = 25
 
 var default_speed = 0
 var applied_speed = 0
+var points = 30
+var point_value_display = preload("res://PointValueDisplay.tscn")
 
 var current_state = states.DEFAULT
 
@@ -19,6 +21,8 @@ func _ready():
 		flip_h = true
 		
 	default_speed = speed
+	
+	points += 15 * Global.difficulty_steps
 	
 	update_applied_speed()
 	animation_player.playback_speed = applied_speed / default_speed
@@ -41,6 +45,10 @@ func update_applied_speed():
 func _on_Hitbox_area_entered(area):
 	if area.is_in_group("Player"):
 		Global.numb_collected_people += 1
+		GameEvent.emit_signal("add_to_score", points)
+		
+		var points_instance = Global.instance_node(point_value_display, global_position)
+		points_instance.value = points
 		
 		# Collect particles here
 		
