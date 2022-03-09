@@ -176,12 +176,12 @@ func people_refuel():
 	current_state = states.PEOPLE_REFUEL
 	texture = flash_texture
 	
-	# Point award on enemies is only increased if the player refuels with all the people
-	if Global.numb_collected_people >= 7:
-		Global.difficulty_steps += 1
-		print("Increased the value of points")
-	
 	if decrease_people_timer.time_left == 0:
+		# Point award on enemies is only increased if the player refuels with all the people
+		if Global.numb_collected_people >= 7:
+			Global.difficulty_steps += 1
+			print("Increased the value of points")
+		
 		decrease_people_timer.start()
 		GameEvent.emit_signal("pause_enemies", true)
 			
