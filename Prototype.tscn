@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Font3.ttf" type="DynamicFontData" id=2]
@@ -12,9 +12,50 @@
 [ext_resource path="res://EnemySpawner.gd" type="Script" id=10]
 [ext_resource path="res://PeopleContainer.gd" type="Script" id=11]
 [ext_resource path="res://OxygenBar.gd" type="Script" id=12]
+[ext_resource path="res://shore_line_3.png" type="Texture" id=13]
+[ext_resource path="res://dark_water_1.png" type="Texture" id=14]
+[ext_resource path="res://dark_water_2.png" type="Texture" id=15]
+[ext_resource path="res://SandBottom.png" type="Texture" id=16]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 131, 10 )
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec2 strength = vec2(5.0, 5.0);
+uniform float speed = 5.0;
+
+float rand(vec2 coord){
+	return fract(sin(dot(coord, vec2(12.9898, 78.233)))* 43758.5453123);
+}
+
+void vertex() {
+	float random = rand(VERTEX);
+	VERTEX.x += cos(TIME + VERTEX.y * speed + random) * strength.x;
+	VERTEX.y += sin(TIME + VERTEX.x * speed + random) * strength.y;
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/strength = Vector2( 2, 2 )
+shader_param/speed = 1.0
+
+[sub_resource type="CubeMesh" id=6]
+size = Vector3( 400, 170, 1 )
+subdivide_width = 8
+subdivide_height = 1
+
+[sub_resource type="CubeMesh" id=7]
+size = Vector3( 400, 80, 1 )
+subdivide_width = 8
+subdivide_height = 1
+
+[sub_resource type="CubeMesh" id=8]
+size = Vector3( 400, 130, 1 )
+subdivide_width = 8
+subdivide_height = 1
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
@@ -82,6 +123,38 @@ position = Vector2( 124, 64 )
 
 [node name="PeopleContainer" type="Node" parent="."]
 script = ExtResource( 11 )
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Environment"]
+material = SubResource( 5 )
+position = Vector2( 117.375, 129 )
+scale = Vector2( 0.75, 1 )
+z_index = -11
+mesh = SubResource( 6 )
+texture = ExtResource( 13 )
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Environment"]
+material = SubResource( 5 )
+position = Vector2( 117.375, 102 )
+scale = Vector2( 0.75, 1 )
+z_index = -12
+mesh = SubResource( 7 )
+texture = ExtResource( 14 )
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="Environment"]
+material = SubResource( 5 )
+position = Vector2( 117.375, 147 )
+scale = Vector2( 0.75, 1 )
+z_index = -13
+mesh = SubResource( 8 )
+texture = ExtResource( 15 )
+
+[node name="Ground" type="Sprite" parent="Environment"]
+modulate = Color( 0.145098, 0.141176, 0.266667, 1 )
+position = Vector2( 126, 211 )
+z_index = 10
+texture = ExtResource( 16 )
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 
