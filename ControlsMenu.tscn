@@ -1,21 +1,45 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Font1.tres" type="DynamicFont" id=1]
 [ext_resource path="res://MenuTest1.tres" type="Theme" id=2]
-[ext_resource path="res://Font1.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://UI/ButtonUnder.png" type="Texture" id=3]
+[ext_resource path="res://Font1.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 3 )
+size = 8
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 4 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -24, 48 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.0
+margin_top = -58.0
+margin_right = 88.0
+margin_bottom = -40.0
+custom_fonts/font = ExtResource( 1 )
+text = "Seaquest"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Button" parent="."]
+visible = false
 light_mask = 0
 anchor_left = 0.5
 anchor_top = 0.5
@@ -37,6 +61,7 @@ __meta__ = {
 }
 
 [node name="Button2" type="Button" parent="."]
+visible = false
 light_mask = 0
 anchor_left = 0.5
 anchor_top = 0.5
@@ -57,41 +82,59 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
+margin_left = 56.0
+margin_top = 32.0
+margin_right = 200.0
+margin_bottom = 136.0
+texture = ExtResource( 3 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Button3" type="Button" parent="."]
 light_mask = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -72.0
+margin_left = -112.0
 margin_top = 40.0
-margin_right = 75.0
-margin_bottom = 64.9245
+margin_right = -70.0
+margin_bottom = 57.0
 mouse_default_cursor_shape = 2
 theme = ExtResource( 2 )
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.129412, 0.0823529, 0.196078, 1 )
 custom_colors/font_color_pressed = Color( 0.133333, 0.0941176, 0.2, 1 )
-text = "Exit"
+text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="."]
+[node name="Button4" type="Button" parent="."]
+light_mask = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -96.0
-margin_top = -56.0
-margin_right = 96.0
-margin_bottom = -32.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color_shadow = Color( 0.635294, 0.635294, 0.635294, 1 )
-text = "Seaquest"
-align = 1
-valign = 1
+margin_left = -72.0
+margin_top = 8.0
+margin_right = 75.0
+margin_bottom = 32.9245
+mouse_default_cursor_shape = 2
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.129412, 0.0823529, 0.196078, 1 )
+custom_colors/font_color_pressed = Color( 0.133333, 0.0941176, 0.2, 1 )
+text = "Settings"
 __meta__ = {
 "_edit_use_anchors_": false
 }
