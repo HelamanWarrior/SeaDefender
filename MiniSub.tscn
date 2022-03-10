@@ -146,6 +146,9 @@ extents = Vector2( 7.5, 4 )
 texture = ExtResource( 1 )
 hframes = 4
 script = ExtResource( 2 )
+speed = 35
+max_hp = 2
+points = 50
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"

@@ -8,13 +8,13 @@ export(int) var speed = 50
 export(int) var max_hp = 1
 export(int) var points = 25
 
-var current_hp = max_hp
 var random_offset = rand_range(0, 10)
 
 var point_value_display = preload("res://PointValueDisplay.tscn")
 var pieces = preload("res://SharkPiece.tscn")
 var piece_texture = preload("res://SharkPieces.png")
 
+onready var current_hp = max_hp
 onready var animation_player = find_node("AnimationPlayer")
 
 func _ready():
