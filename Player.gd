@@ -133,7 +133,7 @@ func clamp_position():
 	target_position.x = clamp(global_position.x, min_position_x, max_position_x)
 	target_position.y = clamp(global_position.y, min_position_y, max_position_y)
 	
-	global_position = lerp(global_position, target_position, 0.3)
+	global_position = lerp(global_position, target_position, 0.5)
 
 func flip_direction_to_movement():
 	if movement_input.x > 0:
@@ -170,7 +170,7 @@ func lose_oxygen(delta):
 	GameEvent.emit_signal("update_oxygen_ui", oxygen_level)
 
 func move_to_refuel():
-	global_position.y = lerp(global_position.y, 23, 0.05)
+	global_position.y = lerp(global_position.y, 19, 0.05)
 
 func reset_animation():
 	rotation_degrees = lerp(rotation_degrees, 0, 0.1)
