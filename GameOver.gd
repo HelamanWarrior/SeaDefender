@@ -17,7 +17,9 @@ func _process(_delta):
 		modulate.a = lerp(modulate.a, 1, 0.1)
 	
 	if allow_restart and Input.is_action_just_released("action"):
-			get_tree().reload_current_scene()
+		Global.difficulty = 1
+		Global.difficulty_steps = 0
+		get_tree().reload_current_scene()
 
 func player_death():
 	current_score.text = "Score " + str(Global.last_play_score)
