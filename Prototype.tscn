@@ -251,10 +251,9 @@ anchor_bottom = 1.0
 script = ExtResource( 21 )
 
 [node name="ColorRect" type="ColorRect" parent="UserInterface/Control/GameOver"]
-modulate = Color( 1, 1, 1, 0.792157 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.145098, 0.141176, 0.266667, 1 )
 
 [node name="GameOverText" type="Label" parent="UserInterface/Control/GameOver"]
 anchor_left = 0.5

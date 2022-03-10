@@ -61,7 +61,7 @@ position = Vector2( 0.5, 0.5 )
 scale = Vector2( 0.65, 0.45 )
 
 [node name="InvisiblityTimer" type="Timer" parent="."]
-wait_time = 1.25
+wait_time = 1.8
 one_shot = true
 autostart = true
 
