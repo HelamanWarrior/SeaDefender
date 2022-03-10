@@ -26,7 +26,7 @@ func _on_Hitbox_area_entered(area):
 		_take_damage(area.get_parent().damage)
 		area.get_parent().queue_free()
 	
-	if area.is_in_group("player") and current_state == states.DEFAULT:
+	if area.is_in_group("Player") and current_state == states.DEFAULT:
 		GameEvent.emit_signal("kill_player")
 
 func _take_damage(damage: float):
