@@ -18,6 +18,7 @@ var points = 0
 var bullet = preload("res://PlayerBullet.tscn")
 var flash_texture = preload("res://PlayerFlash.png")
 var player_pieces_texture = preload("res://PlayerPieces.png")
+var pieces = preload("res://SharkPiece.tscn")
 
 onready var default_texture = texture
 onready var texture_size = Vector2(texture.get_width() / hframes, texture.get_height())
@@ -220,14 +221,14 @@ func death():
 	
 	#modulate = Color(1, 1, 1, 0)
 	
-	#for i in range(10):
-	#	var piece_instance = Global.instance_node(pieces, global_position)
-	#	piece_instance.texture = player_pieces_texture
-	#	piece_instance.hframes = 10
-	#	piece_instance.frame = i
-	#	piece_instance.animation_speed = 0.5
-	#	piece_instance.move_speed = rand_range(50, 100)
-	#	piece_instance.lerp_speed = rand_range(0.025, 0.1)
+	for i in range(10):
+		var piece_instance = Global.instance_node(pieces, global_position)
+		piece_instance.current_texture = player_pieces_texture
+		piece_instance.hframes = 10
+		piece_instance.frame = i
+		piece_instance.animation_speed = 0.5
+		piece_instance.move_speed = rand_range(50, 100)
+		piece_instance.lerp_speed = rand_range(0.025, 0.1)
 	
 	queue_free()
 	

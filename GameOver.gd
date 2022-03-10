@@ -6,6 +6,7 @@ var fade = false
 onready var current_score = $CurrentScore
 onready var high_score = $HighScore
 onready var restart_timer = $RestartTimer
+onready var fade_timer = $FadeTimer
 
 func _ready():
 	GameEvent.connect("kill_player", self, "player_death")
@@ -25,8 +26,11 @@ func player_death():
 	current_score.text = "Score " + str(Global.last_play_score)
 	high_score.text = "Highscore " + str(Global.highscore)
 	visible = true
-	fade = true
-	restart_timer.start()
+	fade_timer.start()
 
 func _on_RestartTimer_timeout():
 	allow_restart = true
+
+func _on_FadeTimer_timeout():
+	fade = true
+	restart_timer.start()

@@ -298,10 +298,15 @@ align = 1
 valign = 1
 
 [node name="RestartTimer" type="Timer" parent="UserInterface/Control/GameOver"]
-wait_time = 1.5
+wait_time = 0.75
+one_shot = true
+
+[node name="FadeTimer" type="Timer" parent="UserInterface/Control/GameOver"]
+wait_time = 0.3
 one_shot = true
 
 [connection signal="area_entered" from="OxygenZone" to="OxygenZone" method="_on_OxygenZone_area_entered"]
 [connection signal="timeout" from="EnemySpawner/SpawnTime" to="EnemySpawner" method="_on_SpawnTime_timeout"]
 [connection signal="timeout" from="EnemySpawner/SpawnPersonTime" to="EnemySpawner" method="_on_SpawnPersonTime_timeout"]
 [connection signal="timeout" from="UserInterface/Control/GameOver/RestartTimer" to="UserInterface/Control/GameOver" method="_on_RestartTimer_timeout"]
+[connection signal="timeout" from="UserInterface/Control/GameOver/FadeTimer" to="UserInterface/Control/GameOver" method="_on_FadeTimer_timeout"]
