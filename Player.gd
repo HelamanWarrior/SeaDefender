@@ -43,6 +43,9 @@ func _physics_process(delta) -> void:
 			movement(delta)
 			control_shooting()
 			lose_oxygen(delta)
+			
+			if oxygen_level <= 0:
+				GameEvent.emit_signal("kill_player")
 		states.REFUEL:
 			move_to_refuel()
 			reset_animation()
@@ -210,6 +213,7 @@ func death():
 	GameEvent.emit_signal("pause_enemies", true)
 	
 	Global.last_play_score = points
+	Global.numb_collected_people = 0
 	
 	if points > Global.highscore:
 		Global.highscore = points
