@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Font3.ttf" type="DynamicFontData" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://WaterShader.tres" type="Material" id=19]
 [ext_resource path="res://shore_line.png" type="Texture" id=20]
 [ext_resource path="res://GameOver.gd" type="Script" id=21]
+[ext_resource path="res://MiniSub.tscn" type="PackedScene" id=22]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 131, 10 )
@@ -122,6 +123,9 @@ wait_time = 5.0
 autostart = true
 
 [node name="SpawnPersonTime" type="Timer" parent="EnemySpawner"]
+
+[node name="MiniSub" parent="." instance=ExtResource( 22 )]
+position = Vector2( 48, 109 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 124, 64 )
@@ -253,7 +257,7 @@ script = ExtResource( 21 )
 [node name="ColorRect" type="ColorRect" parent="UserInterface/Control/GameOver"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.145098, 0.141176, 0.266667, 1 )
+color = Color( 0.12549, 0.0823529, 0.2, 1 )
 
 [node name="GameOverText" type="Label" parent="UserInterface/Control/GameOver"]
 anchor_left = 0.5

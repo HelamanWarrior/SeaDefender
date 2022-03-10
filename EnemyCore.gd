@@ -25,13 +25,13 @@ func _ready():
 
 func _on_Hitbox_area_entered(area):
 	if area.is_in_group("EnemyDamager"):
-		_take_damage(area.get_parent().damage)
+		take_damage(area.get_parent().damage)
 		area.get_parent().queue_free()
 	
 	if area.is_in_group("Player") and current_state == states.DEFAULT:
 		GameEvent.emit_signal("kill_player")
 
-func _take_damage(damage: float):
+func take_damage(damage: float):
 	current_hp -= damage
 	current_state = states.HIT
 	
@@ -79,6 +79,9 @@ func pause(pause):
 		current_state = states.PAUSE
 	else:
 		current_state = states.DEFAULT
+
+func update_sprite_facing():
+	flip_h = velocity.x < 0
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
