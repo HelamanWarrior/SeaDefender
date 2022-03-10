@@ -11,9 +11,6 @@ font_data = ExtResource( 3 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Button" type="Button" parent="."]
 light_mask = 0
@@ -27,10 +24,10 @@ margin_right = 75.0
 margin_bottom = 0.924538
 mouse_default_cursor_shape = 2
 theme = ExtResource( 2 )
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.129412, 0.0823529, 0.196078, 1 )
 custom_colors/font_color_pressed = Color( 0.133333, 0.0941176, 0.2, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -48,10 +45,10 @@ margin_right = 75.0
 margin_bottom = 32.9245
 mouse_default_cursor_shape = 2
 theme = ExtResource( 2 )
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.129412, 0.0823529, 0.196078, 1 )
 custom_colors/font_color_pressed = Color( 0.133333, 0.0941176, 0.2, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Settings"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -69,10 +66,10 @@ margin_right = 75.0
 margin_bottom = 64.9245
 mouse_default_cursor_shape = 2
 theme = ExtResource( 2 )
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.129412, 0.0823529, 0.196078, 1 )
 custom_colors/font_color_pressed = Color( 0.133333, 0.0941176, 0.2, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -87,8 +84,8 @@ margin_left = -96.0
 margin_top = -56.0
 margin_right = 96.0
 margin_bottom = -32.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0.635294, 0.635294, 0.635294, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Seaquest"
 align = 1
 valign = 1
