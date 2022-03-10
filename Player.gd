@@ -208,7 +208,13 @@ func _on_DecreasePeopleTimer_timeout():
 
 func death():
 	GameEvent.emit_signal("pause_enemies", true)
-	modulate = Color(1, 1, 1, 0)
+	
+	Global.last_play_score = points
+	
+	if points > Global.highscore:
+		Global.highscore = points
+	
+	#modulate = Color(1, 1, 1, 0)
 	
 	#for i in range(10):
 	#	var piece_instance = Global.instance_node(pieces, global_position)
@@ -221,8 +227,8 @@ func death():
 	
 	queue_free()
 	
-	OS.delay_msec(250)
-	get_tree().reload_current_scene()
+	#OS.delay_msec(250)
+	#get_tree().reload_current_scene()
 
 func _exit_tree():
 	Global.player = null

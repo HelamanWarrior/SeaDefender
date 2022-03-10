@@ -7,6 +7,8 @@ export(int) var speed = 25
 var default_speed = 0
 var applied_speed = 0
 var points = 30
+var invisible = true
+
 var point_value_display = preload("res://PointValueDisplay.tscn")
 
 var current_state = states.DEFAULT
@@ -58,7 +60,7 @@ func _on_Hitbox_area_entered(area):
 		area.get_parent().queue_free()
 		queue_free()
 	
-	if area.is_in_group("Enemy"):
+	if area.is_in_group("Enemy") and !invisible:
 		if round(rand_range(0, 1)) == 0:
 			speed = default_speed * 2.2
 		else:
@@ -74,3 +76,6 @@ func _on_Hitbox_area_entered(area):
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
+
+func _on_InvisiblityTimer_timeout():
+	invisible = false
