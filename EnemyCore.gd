@@ -12,6 +12,8 @@ var current_hp = max_hp
 var random_offset = rand_range(0, 10)
 
 var point_value_display = preload("res://PointValueDisplay.tscn")
+var pieces = preload("res://SharkPiece.tscn")
+var piece_texture = preload("res://SharkPieces.png")
 
 onready var animation_player = find_node("AnimationPlayer")
 
@@ -58,10 +60,11 @@ func death():
 	#if blood != null:
 	#	Global.instance_node(blood, global_position)
 	
-	#if pieces != null:
-	#	for i in range(2):
-	#		var piece_instance = Global.instance_node(pieces, global_position)
-	#		piece_instance.frame = i
+	if pieces != null:
+		for i in range(2):
+			var piece_instance = Global.instance_node(pieces, global_position)
+			piece_instance.frame = i
+			piece_instance.current_texture = piece_texture
 	
 	OS.delay_msec(Global.freeze_ms)
 	

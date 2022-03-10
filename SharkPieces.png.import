@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shark_pieces.png-73992eba633249de5e2952018f3f52a2.stex"
+path="res://.import/SharkPieces.png-602cdcecc466d0c9b9b7eef7584f9ca3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shark_pieces.png"
-dest_files=[ "res://.import/shark_pieces.png-73992eba633249de5e2952018f3f52a2.stex" ]
+source_file="res://SharkPieces.png"
+dest_files=[ "res://.import/SharkPieces.png-602cdcecc466d0c9b9b7eef7584f9ca3.stex" ]
 
 [params]
 
