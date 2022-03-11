@@ -146,6 +146,7 @@ extents = Vector2( 8, 2.5 )
 texture = ExtResource( 1 )
 hframes = 4
 script = ExtResource( 2 )
+shark_death_sound = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"

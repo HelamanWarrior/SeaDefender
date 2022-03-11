@@ -68,7 +68,6 @@ func movement(delta) -> void:
 	
 	movement_input = movement_input.normalized()
 	
-	# TODO: Multiply speed with Global difficulty
 	velocity = lerp(velocity, movement_input * speed * Global.difficulty, 0.25)
 	
 	global_position += velocity * delta
@@ -78,7 +77,7 @@ func control_shooting():
 		is_shooting = true
 		
 		if can_shoot:
-			#SoundManager.play_sound(SoundManager.player_shoot, rand_range(0.8, 1.2))
+			SoundManager.play_sound(SoundManager.player_shoot, rand_range(0.8, 1.2))
 			
 			for _i in range(4):
 				var location = shoot_point.global_position
@@ -171,7 +170,7 @@ func lose_oxygen(delta):
 	GameEvent.emit_signal("update_oxygen_ui", oxygen_level)
 
 func move_to_refuel():
-	global_position.y = lerp(global_position.y, 13, 0.05)
+	global_position.y = lerp(global_position.y, 11, 0.05)
 
 func reset_animation():
 	rotation_degrees = lerp(rotation_degrees, 0, 0.1)

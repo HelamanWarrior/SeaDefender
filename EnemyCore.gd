@@ -7,6 +7,7 @@ var velocity = Vector2(1, 0)
 export(int) var speed = 50
 export(int) var max_hp = 1
 export(int) var points = 25
+export(bool) var shark_death_sound = false
 
 var random_offset = rand_range(0, 10)
 
@@ -52,7 +53,8 @@ func death():
 	GameEvent.emit_signal("camera_shake", 0.4)
 	GameEvent.emit_signal("add_to_score", points)
 	
-	#SoundManager.play_sound(SoundManager.shark_death, rand_range(0.8, 1.2))
+	if shark_death_sound:
+		SoundManager.play_sound(SoundManager.shark_death, rand_range(0.8, 1.2))
 	
 	var points_instance = Global.instance_node(point_value_display, global_position)
 	points_instance.value = points
