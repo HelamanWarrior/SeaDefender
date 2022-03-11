@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
@@ -18,6 +18,6 @@ void vertex() {
 }"
 
 [resource]
-shader = SubResource( 4 )
+shader = SubResource( 1 )
 shader_param/strength = Vector2( 2, 2 )
 shader_param/speed = 1.0

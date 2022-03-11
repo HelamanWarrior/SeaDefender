@@ -5,7 +5,7 @@
 [ext_resource path="res://MiniSubHit.png" type="Texture" id=3]
 [ext_resource path="res://MiniSubPieces.png" type="Texture" id=4]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -44,7 +44,7 @@ tracks/2/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "hit"
 length = 0.05
 step = 0.05
@@ -99,7 +99,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "idle"
 length = 0.4
 loop = true
@@ -140,7 +140,7 @@ tracks/2/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 7.5, 4 )
 
 [node name="MiniSub" type="Sprite"]
@@ -154,16 +154,16 @@ piece_texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/RESET = SubResource( 2 )
-anims/hit = SubResource( 3 )
-anims/idle = SubResource( 4 )
+anims/RESET = SubResource( 1 )
+anims/hit = SubResource( 2 )
+anims/idle = SubResource( 3 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 visible = false
 position = Vector2( 0.5, 1 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 visible = false

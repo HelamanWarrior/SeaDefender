@@ -23,52 +23,52 @@
 [ext_resource path="res://GameOver.gd" type="Script" id=21]
 [ext_resource path="res://PointsPivot.gd" type="Script" id=22]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 131, 10 )
 
-[sub_resource type="CubeMesh" id=9]
+[sub_resource type="CubeMesh" id=2]
 size = Vector3( 400, 4, 1 )
 subdivide_width = 8
 subdivide_height = 1
 
-[sub_resource type="CubeMesh" id=10]
+[sub_resource type="CubeMesh" id=3]
 size = Vector3( 400, 35, 1 )
 subdivide_width = 8
 subdivide_height = 1
 
-[sub_resource type="CubeMesh" id=6]
+[sub_resource type="CubeMesh" id=4]
 size = Vector3( 400, 170, 1 )
 subdivide_width = 8
 subdivide_height = 1
 
-[sub_resource type="CubeMesh" id=7]
+[sub_resource type="CubeMesh" id=5]
 size = Vector3( 400, 80, 1 )
 subdivide_width = 8
 subdivide_height = 1
 
-[sub_resource type="CubeMesh" id=8]
+[sub_resource type="CubeMesh" id=6]
 size = Vector3( 400, 130, 1 )
 subdivide_width = 8
 subdivide_height = 1
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=7]
 size = 10
 outline_color = Color( 0.12549, 0.0823529, 0.2, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=8]
 size = 8
 outline_color = Color( 0.12549, 0.0823529, 0.2, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=10]
 size = 8
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=11]
 size = 8
 font_data = ExtResource( 3 )
 
@@ -85,7 +85,7 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OxygenZone"]
 visible = false
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource( 10 )
@@ -137,7 +137,7 @@ material = ExtResource( 19 )
 position = Vector2( 117.375, 43 )
 scale = Vector2( 0.75, 1 )
 z_index = 10
-mesh = SubResource( 9 )
+mesh = SubResource( 2 )
 texture = ExtResource( 20 )
 
 [node name="MeshInstance2D5" type="MeshInstance2D" parent="Environment"]
@@ -146,7 +146,7 @@ position = Vector2( 117.375, 59 )
 scale = Vector2( 0.75, 1 )
 z_index = -11
 z_as_relative = false
-mesh = SubResource( 10 )
+mesh = SubResource( 3 )
 texture = ExtResource( 18 )
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Environment"]
@@ -154,7 +154,7 @@ material = ExtResource( 19 )
 position = Vector2( 117.375, 129 )
 scale = Vector2( 0.75, 1 )
 z_index = -12
-mesh = SubResource( 6 )
+mesh = SubResource( 4 )
 texture = ExtResource( 13 )
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="Environment"]
@@ -162,7 +162,7 @@ material = ExtResource( 19 )
 position = Vector2( 117.375, 102 )
 scale = Vector2( 0.75, 1 )
 z_index = -13
-mesh = SubResource( 7 )
+mesh = SubResource( 5 )
 texture = ExtResource( 14 )
 
 [node name="MeshInstance2D3" type="MeshInstance2D" parent="Environment"]
@@ -170,7 +170,7 @@ material = ExtResource( 19 )
 position = Vector2( 117.375, 147 )
 scale = Vector2( 0.75, 1 )
 z_index = -14
-mesh = SubResource( 8 )
+mesh = SubResource( 6 )
 texture = ExtResource( 15 )
 
 [node name="Ground" type="Sprite" parent="Environment"]
@@ -187,6 +187,9 @@ position = Vector2( 11, 9 )
 [node name="Control" type="Control" parent="UserInterface"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PointsPivot" type="Node2D" parent="UserInterface/Control"]
 position = Vector2( 128, 10 )
@@ -197,11 +200,11 @@ margin_left = -42.0
 margin_top = -8.0
 margin_right = 42.0
 margin_bottom = 8.0
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color_shadow = Color( 0.12549, 0.0823529, 0.2, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 1 )
 text = "100"
 align = 1
 script = ExtResource( 17 )
@@ -212,11 +215,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -15.0
 margin_bottom = -7.0
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color_shadow = Color( 0.12549, 0.0823529, 0.2, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 2 )
 text = "oxygen"
 align = 1
 
@@ -270,7 +273,7 @@ margin_left = -128.0
 margin_top = -29.0
 margin_right = 128.0
 margin_bottom = -13.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 9 )
 text = "Game Over!"
 align = 1
 valign = 1
@@ -284,7 +287,7 @@ margin_left = -128.0
 margin_top = 10.0
 margin_right = 128.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 10 )
 text = "Score 100"
 align = 1
 valign = 1
@@ -298,7 +301,7 @@ margin_left = -128.0
 margin_top = 27.0
 margin_right = 128.0
 margin_bottom = 43.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 11 )
 text = "HighScore 1000"
 align = 1
 valign = 1
