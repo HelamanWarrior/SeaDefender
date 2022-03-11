@@ -23,8 +23,9 @@ func instance_node(node: Object, location: Vector2) -> Object:
 	return node_instance
 
 func _input(_event):
-	if Input.is_action_pressed("quit"):
-		get_tree().quit()
+	#if Input.is_action_pressed("quit"):
+	#	get_tree().quit()
+	pass
 
 func numb_collected_people_set(new_value):
 	numb_collected_people = clamp(new_value, 0, 7)
