@@ -19,6 +19,7 @@ var bullet = preload("res://PlayerBullet.tscn")
 var flash_texture = preload("res://PlayerFlash.png")
 var player_pieces_texture = preload("res://PlayerPieces.png")
 var pieces = preload("res://SharkPiece.tscn")
+var shoot_particle = preload("res://PlayerShootParticle.tscn")
 
 onready var default_texture = texture
 onready var texture_size = Vector2(texture.get_width() / hframes, texture.get_height())
@@ -85,7 +86,7 @@ func control_shooting():
 				if !is_facing_right():
 					location.x = -abs(shoot_point.position.x) + global_position.x
 				
-				#Global.instance_node(shoot_particle, location)
+				Global.instance_node(shoot_particle, location)
 			
 			is_shooting = true
 			
