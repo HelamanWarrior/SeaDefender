@@ -171,7 +171,7 @@ func lose_oxygen(delta):
 	GameEvent.emit_signal("update_oxygen_ui", oxygen_level)
 
 func move_to_refuel():
-	global_position.y = lerp(global_position.y, 19, 0.05)
+	global_position.y = lerp(global_position.y, 13, 0.05)
 
 func reset_animation():
 	rotation_degrees = lerp(rotation_degrees, 0, 0.1)

@@ -5,6 +5,7 @@ var current_spawned_points = []
 var current_enemy = null
 
 var shark = preload("res://Shark.tscn")
+var mini_sub = preload("res://MiniSub.tscn")
 var person = preload("res://Person.tscn")
 
 onready var spawn_person_timer = $SpawnPersonTime
@@ -54,8 +55,7 @@ func spawn_enemy_algo(direction_node):
 func change_enemy_random():
 	if Global.difficulty > 1.2:
 		if round(rand_range(1, 3)) == 1:
-			#current_enemy = mini_sub
-			pass
+			current_enemy = mini_sub
 
 func _on_SpawnPersonTime_timeout():
 	if Global.numb_collected_people < 7 and is_instance_valid(Global.people_container) and can_spawn:

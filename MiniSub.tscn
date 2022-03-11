@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://MiniSub.png" type="Texture" id=1]
 [ext_resource path="res://MiniSub.gd" type="Script" id=2]
 [ext_resource path="res://MiniSubHit.png" type="Texture" id=3]
+[ext_resource path="res://MiniSubPieces.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -149,6 +150,7 @@ script = ExtResource( 2 )
 speed = 35
 max_hp = 2
 points = 50
+piece_texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"

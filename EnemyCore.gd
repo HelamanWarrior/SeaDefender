@@ -12,7 +12,7 @@ var random_offset = rand_range(0, 10)
 
 var point_value_display = preload("res://PointValueDisplay.tscn")
 var pieces = preload("res://SharkPiece.tscn")
-var piece_texture = preload("res://SharkPieces.png")
+export(Texture) var piece_texture = preload("res://SharkPieces.png")
 
 onready var current_hp = max_hp
 onready var animation_player = find_node("AnimationPlayer")
