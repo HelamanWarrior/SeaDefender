@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PlayerRefuelOxygen.wav-a2deb24b0fb8d32e9d55b085d068249c.sample"
+
+[deps]
+
+source_file="res://PlayerRefuelOxygen.wav"
+dest_files=[ "res://.import/PlayerRefuelOxygen.wav-a2deb24b0fb8d32e9d55b085d068249c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

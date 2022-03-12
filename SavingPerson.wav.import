@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SavingPerson.wav-05b3a3a3f74b04ec3f9b24828d351671.sample"
+
+[deps]
+
+source_file="res://SavingPerson.wav"
+dest_files=[ "res://.import/SavingPerson.wav-05b3a3a3f74b04ec3f9b24828d351671.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -26,6 +26,7 @@ func movement(delta):
 
 func _on_ShootTimer_timeout():
 	if current_state == states.DEFAULT:
+		SoundManager.play_sound(SoundManager.mini_sub_shoot, rand_range(0.8, 1.2))
 		var location = Vector2()
 		if !flip_h:
 			location = shoot_point.global_position

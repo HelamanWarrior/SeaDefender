@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MiniSubHit.wav-4664aba2eb86c384390f1e12b3d90e35.sample"
+
+[deps]
+
+source_file="res://MiniSubHit.wav"
+dest_files=[ "res://.import/MiniSubHit.wav-4664aba2eb86c384390f1e12b3d90e35.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

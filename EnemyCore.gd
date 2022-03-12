@@ -36,6 +36,9 @@ func take_damage(damage: float):
 	current_hp -= damage
 	current_state = states.HIT
 	
+	if !shark_death_sound:
+		SoundManager.play_sound(SoundManager.mini_sub_hit, rand_range(0.8, 1.2))
+	
 	animation_player.play("hit")
 	scale = Vector2(1.3, 1.3)
 	
@@ -55,6 +58,8 @@ func death():
 	
 	if shark_death_sound:
 		SoundManager.play_sound(SoundManager.shark_death, rand_range(0.8, 1.2))
+	else:
+		SoundManager.play_sound(SoundManager.mini_sub_destroy, rand_range(0.8, 1.2))
 	
 	var points_instance = Global.instance_node(point_value_display, global_position)
 	points_instance.value = points

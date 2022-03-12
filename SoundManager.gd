@@ -2,6 +2,10 @@ extends Node
 
 var shark_death = preload("res://SharkDeath.wav")
 var player_shoot = preload("res://PlayerShoot.wav")
+var player_surface = preload("res://PlayerSurface.wav")
+var mini_sub_hit = preload("res://MiniSubHit.wav")
+var mini_sub_destroy = preload("res://MiniSubDestroy.wav")
+var mini_sub_shoot = preload("res://MiniSubShoot.wav")
 
 var sound_script = preload("res://Sound.gd")
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MiniSubShoot.wav-8a0f502a7b6c24dab96c1cedf86f8f8f.sample"
+
+[deps]
+
+source_file="res://MiniSubShoot.wav"
+dest_files=[ "res://.import/MiniSubShoot.wav-8a0f502a7b6c24dab96c1cedf86f8f8f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
