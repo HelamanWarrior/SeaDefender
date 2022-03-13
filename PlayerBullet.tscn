@@ -50,12 +50,12 @@ anims/Shoot = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 visible = false
-scale = Vector2( 0.6, 0.6 )
+position = Vector2( 3.57628e-07, -5.96046e-08 )
+scale = Vector2( 0.3, 0.3 )
 
 [node name="Hitbox" type="Area2D" parent="." groups=["EnemyDamager"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-visible = false
 position = Vector2( -0.5, 0 )
 shape = SubResource( 3 )
 

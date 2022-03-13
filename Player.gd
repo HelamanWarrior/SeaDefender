@@ -168,7 +168,7 @@ func _on_ReloadTimer_timeout():
 	can_shoot = true
 
 func lose_oxygen(delta):
-	oxygen_level -= delta * 3
+	oxygen_level -= delta * 2.5
 	GameEvent.emit_signal("update_oxygen_ui", oxygen_level)
 
 func move_to_refuel():

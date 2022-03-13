@@ -13,6 +13,9 @@ func _ready():
 
 func _process(delta):
 	global_position += velocity * speed * delta
+	
+	if global_position.x < 0 or global_position.x > 256:
+		queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
