@@ -52,6 +52,8 @@ func _on_Hitbox_area_entered(area):
 		var points_instance = Global.instance_node(point_value_display, global_position)
 		points_instance.value = points
 		
+		SoundManager.play_sound(SoundManager.saving_person, rand_range(0.8, 1.2))
+		
 		# Collect particles here
 		
 		queue_free()

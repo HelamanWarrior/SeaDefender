@@ -156,6 +156,7 @@ func oxygen_refuel():
 	if oxygen_level > 99:
 		GameEvent.emit_signal("pause_enemies", false)
 		Global.difficulty *= 1.1
+		SoundManager.play_sound(SoundManager.oxygen_full_alert, rand_range(0.8, 1.2))
 		
 		texture = default_texture
 		current_state = states.DEFAULT
@@ -185,7 +186,7 @@ func people_refuel():
 		# Point award on enemies is only increased if the player refuels with all the people
 		if Global.numb_collected_people >= 7:
 			Global.difficulty_steps += 1
-			print("Increased the value of points")
+			SoundManager.play_sound(SoundManager.points_increase_sound, rand_range(0.8, 1.2))
 		
 		decrease_people_timer.start()
 		GameEvent.emit_signal("pause_enemies", true)
@@ -215,6 +216,9 @@ func death():
 	
 	Global.last_play_score = points
 	Global.numb_collected_people = 0
+	
+	SoundManager.play_sound(SoundManager.player_death, rand_range(0.8, 1.2))
+	SoundManager.play_sound(SoundManager.game_over, rand_range(0.8, 1.2))
 	
 	if points > Global.highscore:
 		Global.highscore = points

@@ -27,6 +27,12 @@ func update_oxygen_ui(oxygen_amount):
 		elif amount == 5:
 			scale_rotate(1.5, 20)
 			flash_white()
+		elif amount == 2:
+			scale_rotate(1.6, 25)
+			flash_white()
+		elif amount == 1:
+			scale_rotate(1.8, 35)
+			flash_white()
 		
 		previous_amount = amount
 
@@ -37,6 +43,8 @@ func scale_rotate(scale_value, rotation_value):
 	rotation_degrees = rand_range(-rotation_value, rotation_value)
 
 func flash_white():
+	SoundManager.play_sound(SoundManager.oxygen_alert, rand_range(0.8, 1.2))
+	
 	modulate = Color(50, 50, 50)
 	flash_timer.start()
 
