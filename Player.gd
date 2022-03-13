@@ -140,7 +140,7 @@ func flip_direction_to_movement():
 	if movement_input.x > 0:
 		if flip_h: #Player just turned
 			scale = Vector2(0.6, 1.4)
-		
+			
 		flip_h = false
 	elif movement_input.x < 0:
 		if !flip_h: #Player just turned

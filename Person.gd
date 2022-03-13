@@ -10,6 +10,7 @@ var points = 30
 var can_flip_direction = false
 
 var point_value_display = preload("res://PointValueDisplay.tscn")
+var collect_particles = preload("res://CollectParticles.tscn")
 
 var current_state = states.DEFAULT
 
@@ -48,6 +49,7 @@ func _on_Hitbox_area_entered(area):
 	if area.is_in_group("Player"):
 		Global.numb_collected_people += 1
 		GameEvent.emit_signal("add_to_score", points)
+		Global.instance_node(collect_particles, global_position)
 		
 		var points_instance = Global.instance_node(point_value_display, global_position)
 		points_instance.value = points
@@ -59,6 +61,7 @@ func _on_Hitbox_area_entered(area):
 		queue_free()
 		
 	if area.is_in_group("EnemyDamager"):
+		SoundManager.play_sound(SoundManager.person_death, rand_range(0.8, 1.2))
 		area.get_parent().queue_free()
 		queue_free()
 	

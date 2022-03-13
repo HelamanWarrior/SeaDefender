@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PersonDeath.wav-02e178e3ffa9c47a8cf606b6e8663149.sample"
+
+[deps]
+
+source_file="res://PersonDeath.wav"
+dest_files=[ "res://.import/PersonDeath.wav-02e178e3ffa9c47a8cf606b6e8663149.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

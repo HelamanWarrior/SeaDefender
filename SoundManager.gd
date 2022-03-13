@@ -13,6 +13,7 @@ var game_over = preload("res://GameOver.wav")
 var music = preload("res://Music.mp3")
 var oxygen_alert = preload("res://OxygenAlert.wav")
 var oxygen_full_alert = preload("res://FullOxygenAlert.wav")
+var person_death = preload("res://PersonDeath.wav")
 
 var sound_script = preload("res://Sound.gd")
 
@@ -21,7 +22,7 @@ onready var music_node = AudioStreamPlayer.new()
 func _ready():
 	add_child(music_node)
 	music_node.stream = music
-	music_node.volume_db = -14
+	music_node.volume_db = -16
 	music_node.play()
 
 func play_sound(sound: AudioStream, pitch: float):
