@@ -1,20 +1,121 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Font1.tres" type="DynamicFont" id=1]
 [ext_resource path="res://MenuTest1.tres" type="Theme" id=2]
-[ext_resource path="res://Font1.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://title.png" type="Texture" id=3]
 [ext_resource path="res://ChangeScreen.gd" type="Script" id=4]
+[ext_resource path="res://shore_line_2.png" type="Texture" id=5]
+[ext_resource path="res://SandBottom.png" type="Texture" id=6]
+[ext_resource path="res://dark_water_2.png" type="Texture" id=7]
+[ext_resource path="res://shore_line_3.png" type="Texture" id=8]
+[ext_resource path="res://dark_water_1.png" type="Texture" id=9]
+[ext_resource path="res://shore_line.png" type="Texture" id=10]
+[ext_resource path="res://WaterShader.tres" type="Material" id=11]
 
-[sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 3 )
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( -2, -2, -2, -2, -2 ),
+"update": 0,
+"values": [ 0.0, 5.0, 0.0, -5.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 2, 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 400, 4, 1 )
+subdivide_width = 8
+subdivide_height = 1
+
+[sub_resource type="CubeMesh" id=6]
+size = Vector3( 400, 35, 1 )
+subdivide_width = 8
+subdivide_height = 1
+
+[sub_resource type="CubeMesh" id=7]
+size = Vector3( 400, 170, 1 )
+subdivide_width = 8
+subdivide_height = 1
+
+[sub_resource type="CubeMesh" id=8]
+size = Vector3( 400, 80, 1 )
+subdivide_width = 8
+subdivide_height = 1
+
+[sub_resource type="CubeMesh" id=9]
+size = Vector3( 400, 130, 1 )
+subdivide_width = 8
+subdivide_height = 1
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Play" type="Button" parent="."]
 light_mask = 0
@@ -23,84 +124,82 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -50.0
-margin_top = -16.0
+margin_top = 29.0
 margin_right = 50.0
-margin_bottom = 1.0
+margin_bottom = 46.0
 mouse_default_cursor_shape = 2
 theme = ExtResource( 2 )
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.129412, 0.0823529, 0.196078, 1 )
 custom_colors/font_color_pressed = Color( 0.133333, 0.0941176, 0.2, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Play"
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Settings" type="Button" parent="."]
-light_mask = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -50.0
-margin_top = 8.0
-margin_right = 50.0
-margin_bottom = 25.0
-mouse_default_cursor_shape = 2
-theme = ExtResource( 2 )
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.129412, 0.0823529, 0.196078, 1 )
-custom_colors/font_color_pressed = Color( 0.133333, 0.0941176, 0.2, 1 )
-text = "Settings"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Title" type="Sprite" parent="."]
+position = Vector2( 130, 42 )
+texture = ExtResource( 3 )
 
-[node name="Exit" type="Button" parent="."]
-light_mask = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -50.0
-margin_top = 32.0
-margin_right = 50.0
-margin_bottom = 49.0
-mouse_default_cursor_shape = 2
-theme = ExtResource( 2 )
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.129412, 0.0823529, 0.196078, 1 )
-custom_colors/font_color_pressed = Color( 0.133333, 0.0941176, 0.2, 1 )
-text = "Exit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Rotation" type="AnimationPlayer" parent="Title"]
+autoplay = "idle"
+playback_speed = 0.3
+anims/RESET = SubResource( 1 )
+anims/idle = SubResource( 2 )
 
-[node name="Title" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -96.0
-margin_top = -56.0
-margin_right = 96.0
-margin_bottom = -32.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color_shadow = Color( 0.635294, 0.635294, 0.635294, 1 )
-text = "Seaquest"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Scale" type="AnimationPlayer" parent="Title"]
+autoplay = "idle"
+anims/RESET = SubResource( 3 )
+anims/idle = SubResource( 4 )
 
-[connection signal="button_down" from="Play" to="Settings" method="_on_Button_button_down"]
+[node name="Environment" type="Node2D" parent="."]
+position = Vector2( 0, 36 )
+z_index = -20
+
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="Environment"]
+material = ExtResource( 11 )
+position = Vector2( 117.375, 43 )
+scale = Vector2( 0.75, 1 )
+z_index = 10
+mesh = SubResource( 5 )
+texture = ExtResource( 10 )
+
+[node name="MeshInstance2D5" type="MeshInstance2D" parent="Environment"]
+material = ExtResource( 11 )
+position = Vector2( 117.375, 59 )
+scale = Vector2( 0.75, 1 )
+z_index = -11
+z_as_relative = false
+mesh = SubResource( 6 )
+texture = ExtResource( 5 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Environment"]
+material = ExtResource( 11 )
+position = Vector2( 117.375, 129 )
+scale = Vector2( 0.75, 1 )
+z_index = -12
+mesh = SubResource( 7 )
+texture = ExtResource( 8 )
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Environment"]
+material = ExtResource( 11 )
+position = Vector2( 117.375, 102 )
+scale = Vector2( 0.75, 1 )
+z_index = -13
+mesh = SubResource( 8 )
+texture = ExtResource( 9 )
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="Environment"]
+material = ExtResource( 11 )
+position = Vector2( 117.375, 147 )
+scale = Vector2( 0.75, 1 )
+z_index = -14
+mesh = SubResource( 9 )
+texture = ExtResource( 7 )
+
+[node name="Ground" type="Sprite" parent="Environment"]
+modulate = Color( 0.145098, 0.141176, 0.266667, 1 )
+position = Vector2( 126, 211 )
+z_index = 10
+texture = ExtResource( 6 )
+
 [connection signal="button_down" from="Play" to="Play" method="_on_Play_button_down"]
-[connection signal="button_down" from="Settings" to="Play" method="_on_Button2_button_down"]
-[connection signal="button_down" from="Settings" to="Play" method="_on_Settings_button_down"]
-[connection signal="button_down" from="Exit" to="Play" method="_on_Button3_button_down"]
-[connection signal="button_down" from="Exit" to="Play" method="_on_Exit_button_down"]
