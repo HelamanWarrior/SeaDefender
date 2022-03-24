@@ -128,7 +128,7 @@ func clamp_position():
 	var min_position_x = texture_size_half.x
 	var max_position_x = Global.game_size.x - texture_size_half.x
 	
-	var min_position_y = 35 + texture_size_half.y
+	var min_position_y = 30 + texture_size_half.y
 	var max_position_y = 205 - texture_size_half.y
 	
 	var target_position := Vector2.ZERO
@@ -136,6 +136,8 @@ func clamp_position():
 	target_position.y = clamp(global_position.y, min_position_y, max_position_y)
 	
 	global_position = lerp(global_position, target_position, 0.5)
+	global_position.x = clamp(global_position.x, min_position_x - 5, max_position_x + 5)
+	global_position.y = clamp(global_position.y, min_position_y - 5, max_position_y + 5)
 
 func flip_direction_to_movement():
 	if movement_input.x > 0:
@@ -173,7 +175,9 @@ func lose_oxygen(delta):
 	GameEvent.emit_signal("update_oxygen_ui", oxygen_level)
 
 func move_to_refuel():
-	global_position.y = lerp(global_position.y, 11, 0.05)
+	global_position.y = lerp(global_position.y, 30, 0.1)
+	
+	print(global_position.y)
 	
 	if death_on_refuel and abs(global_position.y) - 11 < 1:
 		death()
