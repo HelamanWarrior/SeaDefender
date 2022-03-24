@@ -12,6 +12,7 @@ var movement_input = Vector2()
 var velocity = Vector2()
 var is_shooting = false
 var can_shoot = true
+var death_on_refuel = false
 var oxygen_level = 100
 var points = 0
 
@@ -173,6 +174,9 @@ func lose_oxygen(delta):
 
 func move_to_refuel():
 	global_position.y = lerp(global_position.y, 11, 0.05)
+	
+	if death_on_refuel and abs(global_position.y) - 11 < 1:
+		death()
 
 func reset_animation():
 	rotation_degrees = lerp(rotation_degrees, 0, 0.1)
@@ -181,6 +185,8 @@ func reset_animation():
 func people_refuel():
 	current_state = states.PEOPLE_REFUEL
 	texture = flash_texture
+	
+	death_on_refuel = true
 	
 	if decrease_people_timer.time_left == 0:
 		# Point award on enemies is only increased if the player refuels with all the people
@@ -198,6 +204,8 @@ func people_refuel():
 func less_people_refuel():
 	current_state = states.PEOPLE_REFUEL
 	texture = flash_texture
+	
+	death_on_refuel = true
 	
 	Global.numb_collected_people -= 1
 	GameEvent.emit_signal("pause_enemies", true)

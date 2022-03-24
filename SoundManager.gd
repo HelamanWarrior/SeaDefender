@@ -23,7 +23,9 @@ func _ready():
 	add_child(music_node)
 	music_node.stream = music
 	music_node.volume_db = -16
-	music_node.play()
+	
+	if !Global.mute_sounds:
+		music_node.play()
 
 func play_sound(sound: AudioStream, pitch: float):
 	var audio_stream_player = AudioStreamPlayer.new()
@@ -35,4 +37,5 @@ func play_sound(sound: AudioStream, pitch: float):
 	audio_stream_player.set_script(sound_script)
 	audio_stream_player.connect("finished", audio_stream_player, "finished")
 	
-	audio_stream_player.play()
+	if !Global.mute_sounds:
+		audio_stream_player.play()

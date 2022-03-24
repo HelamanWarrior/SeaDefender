@@ -9,6 +9,8 @@ var people_container = null
 var last_play_score = 0
 var highscore = 0
 
+var mute_sounds = true
+
 var difficulty = 1
 var difficulty_steps = 0
 var numb_collected_people = 0 setget numb_collected_people_set
