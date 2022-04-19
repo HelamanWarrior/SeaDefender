@@ -6,6 +6,7 @@ onready var animation_player = $AnimationPlayer
 
 func _ready():
 	GameEvent.connect("update_person_count", self, "update_person_count")
+	GameEvent.connect("destroy_crew_ui", self, "play_destroy")
 	
 	update_person_count()
 	

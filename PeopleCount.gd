@@ -13,9 +13,11 @@ func update_ui():
 		
 		current_person_offset += 12
 	else:
-		current_person_offset = 0
+		# basically only emit the destroy crew signal once
+		if current_person_offset != 0: # very hacky but okay
+			GameEvent.emit_signal("destroy_crew_ui")
 		
-		kill_the_children()
+		current_person_offset = 0
 		
 		if Global.numb_collected_people > 0:
 			for i in range(Global.numb_collected_people):
@@ -28,7 +30,3 @@ func instance_person():
 	add_child(person_ui_instance)
 	person_ui_instance.global_position = global_position + Vector2(current_person_offset, 0)
 	return person_ui_instance
-
-func kill_the_children():
-	for child in get_children():
-		child.play_destroy()
