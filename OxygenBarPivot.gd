@@ -24,6 +24,9 @@ func update_oxygen_ui(oxygen_amount):
 		elif amount == 10:
 			scale_rotate(1.35, 10)
 			flash_white()
+		elif amount == 7:
+			scale_rotate(1.4, 15)
+			flash_white()
 		elif amount == 5:
 			scale_rotate(1.5, 20)
 			flash_white()

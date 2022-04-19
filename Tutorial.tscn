@@ -1,16 +1,16 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Font3.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Font1.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://OxygenBar.png" type="Texture" id=4]
 [ext_resource path="res://OxygenBarUnder.png" type="Texture" id=5]
-[ext_resource path="res://OxygenZone.gd" type="Script" id=6]
+[ext_resource path="res://w_key.png" type="Texture" id=6]
 [ext_resource path="res://OxygenBarPivot.gd" type="Script" id=7]
 [ext_resource path="res://PeopleCount.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Camera.gd" type="Script" id=9]
-[ext_resource path="res://EnemySpawner.gd" type="Script" id=10]
-[ext_resource path="res://PeopleContainer.gd" type="Script" id=11]
+[ext_resource path="res://a_key.png" type="Texture" id=9]
+[ext_resource path="res://d_key.png" type="Texture" id=10]
+[ext_resource path="res://s_key.png" type="Texture" id=11]
 [ext_resource path="res://OxygenBar.gd" type="Script" id=12]
 [ext_resource path="res://shore_line_3.png" type="Texture" id=13]
 [ext_resource path="res://dark_water_1.png" type="Texture" id=14]
@@ -22,9 +22,12 @@
 [ext_resource path="res://shore_line.png" type="Texture" id=20]
 [ext_resource path="res://GameOver.gd" type="Script" id=21]
 [ext_resource path="res://PointsPivot.gd" type="Script" id=22]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 131, 11 )
+[ext_resource path="res://space_key.png" type="Texture" id=23]
+[ext_resource path="res://arrow_right_key.png" type="Texture" id=24]
+[ext_resource path="res://arrow_left_key.png" type="Texture" id=25]
+[ext_resource path="res://arrow_up_key.png" type="Texture" id=26]
+[ext_resource path="res://arrow_down_key.png" type="Texture" id=27]
+[ext_resource path="res://control_ui_handler.gd" type="Script" id=28]
 
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 400, 4, 1 )
@@ -72,64 +75,74 @@ font_data = ExtResource( 3 )
 size = 8
 font_data = ExtResource( 3 )
 
-[node name="Prototype" type="Node2D"]
+[node name="Tutorial" type="Node2D"]
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2( 128, 70 )
+position = Vector2( 128, 61 )
 current = true
-script = ExtResource( 9 )
-
-[node name="OxygenZone" type="Area2D" parent="."]
-position = Vector2( 129, 43 )
-script = ExtResource( 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OxygenZone"]
-visible = false
-position = Vector2( 0, -1 )
-shape = SubResource( 1 )
-
-[node name="EnemySpawner" type="Node2D" parent="."]
-script = ExtResource( 10 )
-
-[node name="Left" type="Node" parent="EnemySpawner"]
-
-[node name="1" type="Position2D" parent="EnemySpawner/Left"]
-position = Vector2( -32, 77 )
-
-[node name="2" type="Position2D" parent="EnemySpawner/Left"]
-position = Vector2( -32, 109 )
-
-[node name="3" type="Position2D" parent="EnemySpawner/Left"]
-position = Vector2( -32, 141 )
-
-[node name="4" type="Position2D" parent="EnemySpawner/Left"]
-position = Vector2( -32, 173 )
-
-[node name="Right" type="Node" parent="EnemySpawner"]
-
-[node name="1" type="Position2D" parent="EnemySpawner/Right"]
-position = Vector2( 290, 77 )
-
-[node name="2" type="Position2D" parent="EnemySpawner/Right"]
-position = Vector2( 290, 109 )
-
-[node name="3" type="Position2D" parent="EnemySpawner/Right"]
-position = Vector2( 290, 141 )
-
-[node name="4" type="Position2D" parent="EnemySpawner/Right"]
-position = Vector2( 290, 173 )
-
-[node name="SpawnTime" type="Timer" parent="EnemySpawner"]
-wait_time = 5.0
-autostart = true
-
-[node name="SpawnPersonTime" type="Timer" parent="EnemySpawner"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 124, 64 )
 
-[node name="PeopleContainer" type="Node" parent="."]
-script = ExtResource( 11 )
+[node name="Controls" type="Node2D" parent="."]
+position = Vector2( 113.5, 28 )
+script = ExtResource( 28 )
+
+[node name="wasd_keys" type="Node2D" parent="Controls"]
+position = Vector2( -113.5, -28 )
+
+[node name="a_key" type="Sprite" parent="Controls/wasd_keys"]
+position = Vector2( 94.5, 27 )
+texture = ExtResource( 9 )
+hframes = 2
+
+[node name="s_key" type="Sprite" parent="Controls/wasd_keys"]
+position = Vector2( 100.5, 27 )
+z_index = 1
+texture = ExtResource( 11 )
+hframes = 2
+
+[node name="d_key" type="Sprite" parent="Controls/wasd_keys"]
+position = Vector2( 106.5, 27 )
+texture = ExtResource( 10 )
+hframes = 2
+
+[node name="w_key" type="Sprite" parent="Controls/wasd_keys"]
+position = Vector2( 100.5, 21 )
+texture = ExtResource( 6 )
+hframes = 2
+
+[node name="arrow_keys" type="Node2D" parent="Controls"]
+visible = false
+position = Vector2( -113.5, -28 )
+
+[node name="left_key" type="Sprite" parent="Controls/arrow_keys"]
+position = Vector2( 94.5, 27 )
+texture = ExtResource( 25 )
+hframes = 2
+
+[node name="down_key" type="Sprite" parent="Controls/arrow_keys"]
+position = Vector2( 100.5, 27 )
+z_index = 1
+texture = ExtResource( 27 )
+hframes = 2
+
+[node name="right_key" type="Sprite" parent="Controls/arrow_keys"]
+position = Vector2( 106.5, 27 )
+texture = ExtResource( 24 )
+hframes = 2
+
+[node name="up_key" type="Sprite" parent="Controls/arrow_keys"]
+position = Vector2( 100.5, 21 )
+texture = ExtResource( 26 )
+hframes = 2
+
+[node name="generic_key" type="Node2D" parent="Controls"]
+
+[node name="space_key" type="Sprite" parent="Controls/generic_key"]
+position = Vector2( 23, -1 )
+texture = ExtResource( 23 )
+hframes = 2
 
 [node name="Environment" type="Node2D" parent="."]
 
@@ -312,9 +325,6 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
-[connection signal="area_entered" from="OxygenZone" to="OxygenZone" method="_on_OxygenZone_area_entered"]
-[connection signal="timeout" from="EnemySpawner/SpawnTime" to="EnemySpawner" method="_on_SpawnTime_timeout"]
-[connection signal="timeout" from="EnemySpawner/SpawnPersonTime" to="EnemySpawner" method="_on_SpawnPersonTime_timeout"]
 [connection signal="timeout" from="UserInterface/Control/OxygenBarPivot/FlashTimer" to="UserInterface/Control/OxygenBarPivot" method="_on_FlashTimer_timeout"]
 [connection signal="timeout" from="UserInterface/Control/GameOver/RestartTimer" to="UserInterface/Control/GameOver" method="_on_RestartTimer_timeout"]
 [connection signal="timeout" from="UserInterface/Control/GameOver/FadeTimer" to="UserInterface/Control/GameOver" method="_on_FadeTimer_timeout"]

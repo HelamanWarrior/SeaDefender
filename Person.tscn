@@ -60,11 +60,5 @@ visible = false
 position = Vector2( 0.5, 0.5 )
 scale = Vector2( 0.65, 0.45 )
 
-[node name="InvisiblityTimer" type="Timer" parent="."]
-wait_time = 1.8
-one_shot = true
-autostart = true
-
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
-[connection signal="timeout" from="InvisiblityTimer" to="." method="_on_InvisiblityTimer_timeout"]

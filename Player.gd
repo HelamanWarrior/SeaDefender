@@ -13,6 +13,8 @@ var velocity = Vector2()
 var is_shooting = false
 var can_shoot = true
 var death_on_refuel = false
+var full_crew = false
+
 var oxygen_level = 100
 var points = 0
 
@@ -37,6 +39,7 @@ func _ready():
 	GameEvent.connect("people_refuel", self, "people_refuel")
 	GameEvent.connect("less_people_refuel", self, "less_people_refuel")
 	GameEvent.connect("kill_player", self, "death")
+	GameEvent.connect("full_crew", self, "full_crew")
 
 func _physics_process(delta) -> void:
 	clamp_position()
@@ -161,6 +164,9 @@ func oxygen_refuel():
 		Global.difficulty *= 1.1
 		SoundManager.play_sound(SoundManager.oxygen_full_alert, rand_range(0.8, 1.2))
 		
+		if death_on_refuel:
+			GameEvent.emit_signal("kill_player")
+		
 		texture = default_texture
 		current_state = states.DEFAULT
 
@@ -175,12 +181,7 @@ func lose_oxygen(delta):
 	GameEvent.emit_signal("update_oxygen_ui", oxygen_level)
 
 func move_to_refuel():
-	global_position.y = lerp(global_position.y, 30, 0.1)
-	
-	print(global_position.y)
-	
-	if death_on_refuel and abs(global_position.y) - 11 < 1:
-		death()
+	global_position.y = lerp(global_position.y, 35, 0.1)
 
 func reset_animation():
 	rotation_degrees = lerp(rotation_degrees, 0, 0.1)
@@ -190,7 +191,8 @@ func people_refuel():
 	current_state = states.PEOPLE_REFUEL
 	texture = flash_texture
 	
-	death_on_refuel = true
+	if oxygen_level >= 75:
+		death_on_refuel = true
 	
 	if decrease_people_timer.time_left == 0:
 		# Point award on enemies is only increased if the player refuels with all the people
@@ -209,11 +211,11 @@ func less_people_refuel():
 	current_state = states.PEOPLE_REFUEL
 	texture = flash_texture
 	
-	death_on_refuel = true
+	if oxygen_level >= 75:
+		death_on_refuel = true
 	
 	Global.numb_collected_people -= 1
 	GameEvent.emit_signal("pause_enemies", true)
-	GameEvent.emit_signal("kill_all_enemies")
 	oxygen_refuel()
 
 func add_to_score(amount):
@@ -243,13 +245,16 @@ func death():
 		piece_instance.hframes = 10
 		piece_instance.frame = i
 		piece_instance.animation_speed = 0.5
-		piece_instance.move_speed = rand_range(50, 100)
-		piece_instance.lerp_speed = rand_range(0.025, 0.1)
+		piece_instance.move_speed = rand_range(75, 200)
+		piece_instance.lerp_speed = rand_range(0.05, 0.1)
 	
 	queue_free()
 	
 	#OS.delay_msec(250)
 	#get_tree().reload_current_scene()
+
+func full_crew():
+	full_crew = true
 
 func _exit_tree():
 	Global.player = null

@@ -9,7 +9,7 @@ var people_container = null
 var last_play_score = 0
 var highscore = 0
 
-var mute_sounds = true
+var mute_sounds = false
 
 var difficulty = 1
 var difficulty_steps = 0
@@ -31,5 +31,8 @@ func _input(_event):
 
 func numb_collected_people_set(new_value):
 	numb_collected_people = clamp(new_value, 0, 7)
+	
+	if numb_collected_people == 7:
+		GameEvent.emit_signal("full_crew")
 	
 	GameEvent.emit_signal("update_person_count")

@@ -7,7 +7,6 @@ export(int) var speed = 25
 var default_speed = 0
 var applied_speed = 0
 var points = 30
-var can_flip_direction = false
 
 var point_value_display = preload("res://PointValueDisplay.tscn")
 var collect_particles = preload("res://CollectParticles.tscn")
@@ -66,16 +65,10 @@ func _on_Hitbox_area_entered(area):
 		queue_free()
 	
 	if area.is_in_group("Enemy"):
-		if can_flip_direction:
-			if round(rand_range(0, 1)) == 0:
-				speed = default_speed * 2.2
-			else:
-				speed = -default_speed * 2.2
+		if round(rand_range(1, 4)) == 1:
+			speed = -default_speed * 2.2
 		else:
-			if speed > 0:
-				speed = default_speed * 2.2
-			elif speed < 0:
-				speed = -default_speed * 2.2
+			speed = default_speed * 2.2
 		
 		if speed > 0:
 			flip_h = false
@@ -87,6 +80,3 @@ func _on_Hitbox_area_entered(area):
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
-
-func _on_InvisiblityTimer_timeout():
-	can_flip_direction = true
