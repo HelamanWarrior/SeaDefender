@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Font3.ttf" type="DynamicFontData" id=2]
@@ -29,6 +29,9 @@
 [ext_resource path="res://arrow_down_key.png" type="Texture" id=27]
 [ext_resource path="res://control_ui_handler.gd" type="Script" id=28]
 [ext_resource path="res://empty_people.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Tutorial.gd" type="Script" id=30]
+[ext_resource path="res://joystick.png" type="Texture" id=31]
+[ext_resource path="res://a_button.png" type="Texture" id=32]
 
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 400, 4, 1 )
@@ -77,6 +80,7 @@ size = 8
 font_data = ExtResource( 3 )
 
 [node name="Tutorial" type="Node2D"]
+script = ExtResource( 30 )
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 128, 61 )
@@ -143,6 +147,20 @@ hframes = 2
 [node name="space_key" type="Sprite" parent="Controls/generic_key"]
 position = Vector2( 23, -1 )
 texture = ExtResource( 23 )
+hframes = 2
+
+[node name="gamepad" type="Node2D" parent="Controls"]
+visible = false
+position = Vector2( 8, 0 )
+
+[node name="joystick" type="Sprite" parent="Controls/gamepad"]
+position = Vector2( -0.5, 0 )
+texture = ExtResource( 31 )
+hframes = 5
+
+[node name="a_button" type="Sprite" parent="Controls/gamepad"]
+position = Vector2( 15, 1 )
+texture = ExtResource( 32 )
 hframes = 2
 
 [node name="Environment" type="Node2D" parent="."]

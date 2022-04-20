@@ -1,6 +1,6 @@
 extends Sprite
 
-enum states {DEFAULT, REFUEL, PEOPLE_REFUEL}
+enum states {DEFAULT, REFUEL, PEOPLE_REFUEL, TUTORIAL}
 
 var current_state = states.DEFAULT
 
@@ -60,6 +60,9 @@ func _physics_process(delta) -> void:
 			move_to_refuel()
 			reset_animation()
 			people_refuel()
+		states.TUTORIAL:
+			movement(delta)
+			control_shooting()
 
 func movement(delta) -> void:
 	control_animation()
