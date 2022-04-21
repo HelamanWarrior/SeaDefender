@@ -171,6 +171,8 @@ position = Vector2( 15, 1 )
 texture = ExtResource( 32 )
 hframes = 2
 
+[node name="Tween" type="Tween" parent="Controls"]
+
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="MeshInstance2D4" type="MeshInstance2D" parent="Environment"]
@@ -385,6 +387,7 @@ valign = 1
 wait_time = 1.3
 one_shot = true
 
+[connection signal="tween_completed" from="Controls/Tween" to="Controls" method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="UserInterface/Control/OxygenBarPivot/FlashTimer" to="UserInterface/Control/OxygenBarPivot" method="_on_FlashTimer_timeout"]
 [connection signal="timeout" from="UserInterface/Control/GameOver/RestartTimer" to="UserInterface/Control/GameOver" method="_on_RestartTimer_timeout"]
 [connection signal="timeout" from="UserInterface/Control/GameOver/FadeTimer" to="UserInterface/Control/GameOver" method="_on_FadeTimer_timeout"]

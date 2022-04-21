@@ -256,9 +256,6 @@ func death():
 		piece_instance.lerp_speed = rand_range(0.05, 0.1)
 	
 	queue_free()
-	
-	#OS.delay_msec(250)
-	#get_tree().reload_current_scene()
 
 func full_crew():
 	full_crew = true

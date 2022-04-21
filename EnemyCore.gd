@@ -10,6 +10,7 @@ export(int) var points = 25
 export(bool) var shark_death_sound = false
 
 var random_offset = rand_range(0, 10)
+var destroy = false
 
 var point_value_display = preload("res://PointValueDisplay.tscn")
 var pieces = preload("res://SharkPiece.tscn")
@@ -55,6 +56,7 @@ func check_death():
 func death():
 	GameEvent.emit_signal("camera_shake", 0.4)
 	GameEvent.emit_signal("add_to_score", points)
+	GameEvent.emit_signal("increase_shark_kill_count")
 	
 	if shark_death_sound:
 		SoundManager.play_sound(SoundManager.shark_death, rand_range(0.8, 1.2))
@@ -75,6 +77,7 @@ func death():
 	
 	OS.delay_msec(Global.freeze_ms)
 	
+	destroy = true
 	queue_free()
 
 func control_animation():
@@ -91,4 +94,7 @@ func update_sprite_facing():
 	flip_h = velocity.x < 0
 
 func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
+	if !destroy:
+		GameEvent.emit_signal("increase_shark_kill_count")
+		queue_free()
+		destroy = true

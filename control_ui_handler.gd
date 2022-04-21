@@ -21,6 +21,11 @@ onready var space_key = $generic_key/space_key
 onready var a_button = $gamepad/a_button
 onready var joystick = $gamepad/joystick
 
+onready var tween = $Tween
+
+func _ready():
+	GameEvent.connect("hide_controls", self, "hide_controls")
+
 func _input(event):
 	animate_key_press(a_key, KEY_A, wasd_key_container)
 	animate_key_press(s_key, KEY_S, wasd_key_container)
@@ -82,3 +87,10 @@ func animate_key_press(key_node, scancode, container):
 		key_node.frame = 1
 	else:
 		key_node.frame = 0
+
+func hide_controls():
+	tween.interpolate_property(self, "scale", Vector2(1, 1), Vector2(0, 0), 0.2)
+	tween.start()
+
+func _on_Tween_tween_completed(object, key):
+	queue_free()
