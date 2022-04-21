@@ -18,6 +18,9 @@ var full_crew = false
 var oxygen_level = 100
 var points = 0
 
+var movement_pressed = false
+var shoot_pressed = false
+
 var bullet = preload("res://PlayerBullet.tscn")
 var flash_texture = preload("res://PlayerFlash.png")
 var player_pieces_texture = preload("res://PlayerPieces.png")
@@ -63,6 +66,7 @@ func _physics_process(delta) -> void:
 		states.TUTORIAL:
 			movement(delta)
 			control_shooting()
+			check_if_all_controls_used()
 
 func movement(delta) -> void:
 	control_animation()
@@ -258,6 +262,15 @@ func death():
 
 func full_crew():
 	full_crew = true
+
+func check_if_all_controls_used():
+	if Input.is_action_pressed("left") or Input.is_action_pressed("right") or Input.is_action_pressed("up") or Input.is_action_pressed("down"):
+		movement_pressed = true
+	if Input.is_action_pressed("action"):
+		shoot_pressed = true
+	
+	if movement_pressed and shoot_pressed:
+		GameEvent.emit_signal("all_controls_pressed")
 
 func _exit_tree():
 	Global.player = null

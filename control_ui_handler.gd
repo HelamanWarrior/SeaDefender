@@ -53,10 +53,8 @@ func _input(event):
 		
 		if Input.get_joy_axis(0, JOY_AXIS_1) < 0:
 			joystick.frame = 4
-			print("AA")
 		else:
 			joystick.frame = 1
-			print("bb")
 	else:
 		joystick.frame = 0
 

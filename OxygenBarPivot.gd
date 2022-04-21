@@ -6,6 +6,7 @@ onready var flash_timer = $FlashTimer
 
 func _ready():
 	GameEvent.connect("update_oxygen_ui", self, "update_oxygen_ui")
+	GameEvent.connect("toggle_oxygen_visiblity", self, "toggle_visibility")
 
 func _process(_delta):
 	scale = lerp(scale, Vector2(1, 1), 0.1)
@@ -50,6 +51,9 @@ func flash_white():
 	
 	modulate = Color(50, 50, 50)
 	flash_timer.start()
+
+func toggle_visibility(is_visibility):
+	visible = is_visibility
 
 func _on_FlashTimer_timeout():
 	modulate = Color.white
