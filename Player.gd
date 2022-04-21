@@ -15,6 +15,8 @@ var can_shoot = true
 var death_on_refuel = false
 var full_crew = false
 
+var tutorial_allow_to_refuel_oxygen = false
+
 var oxygen_level = 100
 var points = 0
 
