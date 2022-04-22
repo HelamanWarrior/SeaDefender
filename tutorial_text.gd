@@ -8,7 +8,12 @@ const TEXT_OPTIONS = [
 	"Great Work!",
 	"Oxygen is running low...",
 	"Return to the surface to refuel it",
-	"Remember to always refuel oxygen when low"
+	"   ",
+	"Look! A person is in the water.",
+	"Save them before the sharks get them.",
+	"Nice work!",
+	"Collect a full crew of people...",
+	"then refuel oxygen"
 ]
 
 var current_text_option = 0
@@ -18,13 +23,14 @@ var all_controls_pressed = false
 var player_refueled = false
 
 var oxygen_zone = preload("res://oxygen_zone.tscn")
+var person = preload("res://Person.tscn")
 
 onready var main_text = $MainText
 onready var finish_text_timer = $FinishTextTimer
 
 func _ready():
 	GameEvent.connect("all_controls_pressed", self, "all_controls_pressed")
-	GameEvent.connect("increase_shark_kill_count", self, "increase_shark_kill_count")
+	GameEvent.connect("increase_shark_kill_count", self, "shark_kill_count_increase")
 	GameEvent.connect("people_refuel", self, "player_oxygen_refuel")
 	GameEvent.connect("less_people_refuel", self, "player_oxygen_refuel")
 	
@@ -76,6 +82,33 @@ func _process(delta):
 						main_text.percent_visible = 0
 		7: # remember to refuel
 			uncover_text()
+			update_text_once_previous_completes()
+		8: # empty space to add time
+			uncover_text()
+			update_text_once_previous_completes()
+		9: # save person
+			uncover_text()
+			if Global.numb_collected_people >= 1:
+				if main_text.percent_visible < 1:
+					call_finish_text_timer()
+				else:
+					if main_text.percent_visible != 0:
+						current_text_option += 1
+						main_text.percent_visible = 0
+		10: # nice work
+			uncover_text()
+			update_text_once_previous_completes()
+		11: # collect full crews of people
+			uncover_text()
+			if Global.numb_collected_people >= 7:
+				if main_text.percent_visible < 1:
+					call_finish_text_timer()
+				else:
+					if main_text.percent_visible != 0:
+						current_text_option += 1
+						main_text.percent_visible = 0
+		12: # refuel oxygen with full crew
+			uncover_text()
 
 func uncover_text():
 	main_text.percent_visible = move_toward(main_text.percent_visible, 1, get_process_delta_time() * 0.7)
@@ -106,11 +139,15 @@ func _on_FinishTextTimer_timeout():
 			GameEvent.emit_signal("toggle_oxygen_visiblity", true)
 			
 			Global.instance_node(oxygen_zone, Vector2(129, 43))
+		8:
+			Global.instance_node(person, Vector2(-30, 85))
+		11:
+			GameEvent.emit_signal("toggle_crew_visiblity", true)
 
 func all_controls_pressed():
 	all_controls_pressed = true
 
-func increase_shark_kill_count():
+func shark_kill_count_increase():
 	shark_kill_count += 1
 
 func player_oxygen_refuel():

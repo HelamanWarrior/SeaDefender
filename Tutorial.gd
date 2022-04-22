@@ -4,7 +4,6 @@ var shark = preload("res://Shark.tscn")
 
 func _ready():
 	GameEvent.connect("instance_tutorial_shark", self, "instance_shark")
-	GameEvent.connect("increase_shark_kill_count", self, "increase_shark_kill_count")
 	
 	if Global.player != null:
 		Global.player.current_state = Global.player.states.TUTORIAL

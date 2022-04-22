@@ -6,6 +6,7 @@ var current_person_offset: int = 0
 
 func _ready():
 	GameEvent.connect("update_person_count", self, "update_ui")
+	GameEvent.connect("toggle_crew_visiblity", self, "toggle_visiblity")
 
 func update_ui():
 	if get_child_count() < Global.numb_collected_people:
@@ -30,3 +31,6 @@ func instance_person():
 	add_child(person_ui_instance)
 	person_ui_instance.global_position = global_position + Vector2(current_person_offset, 0)
 	return person_ui_instance
+
+func toggle_visiblity(is_visible):
+	visible = is_visible
