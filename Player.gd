@@ -200,7 +200,8 @@ func people_refuel():
 	current_state = states.PEOPLE_REFUEL
 	texture = flash_texture
 	
-	if oxygen_level >= 75:
+	# kill player if they refuel extremely early without a full crew
+	if oxygen_level >= 75 and Global.numb_collected_people < 7:
 		death_on_refuel = true
 	
 	if decrease_people_timer.time_left == 0:

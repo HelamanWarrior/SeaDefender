@@ -140,7 +140,8 @@ func _on_FinishTextTimer_timeout():
 			
 			Global.instance_node(oxygen_zone, Vector2(129, 43))
 		8:
-			Global.instance_node(person, Vector2(-30, 85))
+			GameEvent.emit_signal("spawn_tutorial_people")
+			#Global.instance_node(person, Vector2(-30, 85))
 		11:
 			GameEvent.emit_signal("toggle_crew_visiblity", true)
 

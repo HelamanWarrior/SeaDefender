@@ -177,6 +177,7 @@ texture = ExtResource( 16 )
 position = Vector2( 11, 9 )
 
 [node name="EmptyPeople" parent="UserInterface" instance=ExtResource( 23 )]
+z_index = -1
 
 [node name="Control" type="Control" parent="UserInterface"]
 anchor_right = 1.0
