@@ -11,9 +11,13 @@ const TEXT_OPTIONS = [
 	"   ",
 	"Look! A person is in the water.",
 	"Save them before the sharks get them.",
-	"Nice work!",
 	"Collect a full crew of people...",
-	"then refuel oxygen"
+	"then refuel oxygen",
+	"Always try to refuel with a full crew",
+	"that's how you progess.",
+	"Anyways that's everything...",
+	"Good luck!",
+	" "
 ]
 
 var current_text_option = 0
@@ -21,6 +25,7 @@ var shark_kill_count = 0
 
 var all_controls_pressed = false
 var player_refueled = false
+var full_crew_refuel = false
 
 var oxygen_zone = preload("res://oxygen_zone.tscn")
 var person = preload("res://Person.tscn")
@@ -33,6 +38,7 @@ func _ready():
 	GameEvent.connect("increase_shark_kill_count", self, "shark_kill_count_increase")
 	GameEvent.connect("people_refuel", self, "player_oxygen_refuel")
 	GameEvent.connect("less_people_refuel", self, "player_oxygen_refuel")
+	GameEvent.connect("people_refuel", self, "full_crew_refuel")
 	
 	main_text.percent_visible = 0
 
@@ -95,10 +101,7 @@ func _process(delta):
 					if main_text.percent_visible != 0:
 						current_text_option += 1
 						main_text.percent_visible = 0
-		10: # nice work
-			uncover_text()
-			update_text_once_previous_completes()
-		11: # collect full crews of people
+		10: # collect full crews of people
 			uncover_text()
 			if Global.numb_collected_people >= 7:
 				if main_text.percent_visible < 1:
@@ -107,8 +110,31 @@ func _process(delta):
 					if main_text.percent_visible != 0:
 						current_text_option += 1
 						main_text.percent_visible = 0
-		12: # refuel oxygen with full crew
+		11: # refuel oxygen with full crew
 			uncover_text()
+			if full_crew_refuel:
+				if main_text.percent_visible < 1:
+					call_finish_text_timer()
+				else:
+					if main_text.percent_visible != 0:
+						current_text_option += 1
+						main_text.percent_visible = 0
+		12: # Always try to refuel with a full crew
+			uncover_text()
+			update_text_once_previous_completes()
+		13: # that's how you progess.
+			uncover_text()
+			update_text_once_previous_completes()
+		14: # Anyways that's everything...
+			uncover_text()
+			update_text_once_previous_completes()
+		15: # Good luck!
+			uncover_text()
+			update_text_once_previous_completes()
+		16: 
+			uncover_text()
+			if main_text.percent_visible == 1:
+				get_tree().change_scene("res://Prototype.tscn")
 
 func uncover_text():
 	main_text.percent_visible = move_toward(main_text.percent_visible, 1, get_process_delta_time() * 0.7)
@@ -142,7 +168,7 @@ func _on_FinishTextTimer_timeout():
 		8:
 			GameEvent.emit_signal("spawn_tutorial_people")
 			#Global.instance_node(person, Vector2(-30, 85))
-		11:
+		10:
 			GameEvent.emit_signal("toggle_crew_visiblity", true)
 
 func all_controls_pressed():
@@ -153,3 +179,6 @@ func shark_kill_count_increase():
 
 func player_oxygen_refuel():
 	player_refueled = true
+
+func full_crew_refuel():
+	full_crew_refuel = true
