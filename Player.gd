@@ -77,8 +77,18 @@ func movement(delta) -> void:
 	if !is_shooting:
 		flip_direction_to_movement()
 	
-	movement_input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	movement_input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	if Input.get_connected_joypads().size() == 0:
+		movement_input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+		movement_input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	else:
+		var joy_input = Vector2(Input.get_joy_axis(0, JOY_AXIS_0), Input.get_joy_axis(0, JOY_AXIS_1))
+		
+		if joy_input.length() < 0.3:
+			joy_input = Vector2(0, 0)
+		else:
+			joy_input = joy_input.normalized() * ((joy_input.length() - 0.3) / (1 - 0.3))
+		
+		movement_input = joy_input
 	
 	movement_input = movement_input.normalized()
 	
