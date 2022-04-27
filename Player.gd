@@ -183,6 +183,7 @@ func oxygen_refuel():
 		
 		if full_crew:
 			Global.difficulty *= 1.1
+			GameEvent.emit_signal("increase_level")
 		
 		SoundManager.play_sound(SoundManager.oxygen_full_alert, rand_range(0.8, 1.2))
 		

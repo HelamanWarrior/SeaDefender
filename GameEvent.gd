@@ -12,6 +12,7 @@ signal pause_enemies(pause)
 signal kill_player()
 signal full_crew()
 signal destroy_crew_ui()
+signal increase_level()
 
 # user interface visibility
 signal toggle_points_visibility(visible)
