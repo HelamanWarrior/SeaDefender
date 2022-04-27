@@ -170,7 +170,10 @@ func oxygen_refuel():
 	
 	if oxygen_level > 99:
 		GameEvent.emit_signal("pause_enemies", false)
-		Global.difficulty *= 1.1
+		
+		if full_crew:
+			Global.difficulty *= 1.1
+		
 		SoundManager.play_sound(SoundManager.oxygen_full_alert, rand_range(0.8, 1.2))
 		
 		if death_on_refuel:
@@ -201,8 +204,8 @@ func people_refuel():
 	texture = flash_texture
 	
 	# kill player if they refuel extremely early without a full crew
-	if oxygen_level >= 75 and Global.numb_collected_people < 7:
-		death_on_refuel = true
+	#if oxygen_level >= 75 and Global.numb_collected_people < 7:
+	#	death_on_refuel = true
 	
 	if decrease_people_timer.time_left == 0:
 		# Point award on enemies is only increased if the player refuels with all the people
