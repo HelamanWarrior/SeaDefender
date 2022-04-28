@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://lazer_shark_pieces.png" type="Texture" id=1]
 [ext_resource path="res://MiniSub.gd" type="Script" id=2]
-[ext_resource path="res://shark.png" type="Texture" id=3]
 [ext_resource path="res://lazer_shark_hit.png" type="Texture" id=4]
 [ext_resource path="res://lazer_shark.png" type="Texture" id=5]
 
@@ -42,7 +41,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ ExtResource( 3 ) ]
+"values": [ ExtResource( 5 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -145,11 +144,11 @@ tracks/2/keys = {
 extents = Vector2( 7.5, 4 )
 
 [node name="LazerShark" type="Sprite"]
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 hframes = 4
 script = ExtResource( 2 )
 speed = 35
-max_hp = 2
+max_hp = 3
 points = 75
 piece_texture = ExtResource( 1 )
 
