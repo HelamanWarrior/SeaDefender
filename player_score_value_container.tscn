@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Font1.tres" type="DynamicFont" id=1]
+[ext_resource path="res://player_score_value_container.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Flash"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0470588, 0.901961, 0.94902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.0470588, 0.901961, 0.94902, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Player" type="HBoxContainer" groups=["PlayerContainer"]]
+margin_right = 256.0
+margin_bottom = 8.0
+alignment = 1
+script = ExtResource( 2 )
+
+[node name="Rank" type="Label" parent="."]
+margin_left = 11.0
+margin_right = 86.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 75, 0 )
+custom_fonts/font = ExtResource( 1 )
+text = "1st"
+align = 1
+valign = 1
+
+[node name="Name" type="Label" parent="."]
+margin_left = 90.0
+margin_right = 165.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 75, 0 )
+custom_fonts/font = ExtResource( 1 )
+text = "jod"
+align = 1
+valign = 1
+
+[node name="Score" type="Label" parent="."]
+margin_left = 169.0
+margin_right = 244.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 75, 0 )
+custom_fonts/font = ExtResource( 1 )
+text = "1350"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Flash = SubResource( 1 )
+anims/RESET = SubResource( 2 )

@@ -4,7 +4,7 @@ const POSSIBLE_LETTERS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
 
 var current_letter_box_focus = 1
 
-onready var letter_select_boxes = [$HBoxContainer/LetterSelectBox1, $HBoxContainer/LetterSelectBox2, $HBoxContainer/LetterSelectBox3]
+onready var letter_select_boxes = [$TextInputField/LetterSelectBox1, $TextInputField/LetterSelectBox2, $TextInputField/LetterSelectBox3]
 
 func _ready():
 	for letter_box in letter_select_boxes:
@@ -15,7 +15,7 @@ func _ready():
 func _input(_event):
 	if Input.is_action_just_pressed("down"):
 		cycle_letters(1)
-	elif Input.is_action_pressed("up"):
+	elif Input.is_action_just_pressed("up"):
 		cycle_letters(-1)
 
 func cycle_letters(cycle_speed):

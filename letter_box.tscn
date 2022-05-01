@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Font1.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://letter_select_box_focused.png" type="Texture" id=2]
 [ext_resource path="res://letter_select_box.png" type="Texture" id=3]
 [ext_resource path="res://letter_box.gd" type="Script" id=4]
+[ext_resource path="res://down_arrow_ui.png" type="Texture" id=5]
+[ext_resource path="res://up_arrow_ui.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -26,3 +28,15 @@ custom_fonts/font = SubResource( 1 )
 text = "a"
 align = 1
 valign = 1
+
+[node name="Arrows" type="Node2D" parent="."]
+
+[node name="Up" type="Sprite" parent="Arrows"]
+position = Vector2( 13.5, -5 )
+texture = ExtResource( 6 )
+hframes = 2
+
+[node name="Down" type="Sprite" parent="Arrows"]
+position = Vector2( 13.5, 30 )
+texture = ExtResource( 5 )
+hframes = 2
