@@ -10,3 +10,6 @@ onready var animation_player = $AnimationPlayer
 func flash():
 	animation_player.play("Flash")
 	flash = true
+
+func update_text(text_input):
+	name_label.text = text_input

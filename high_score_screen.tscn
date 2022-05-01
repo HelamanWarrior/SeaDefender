@@ -37,9 +37,8 @@ alignment = 1
 script = ExtResource( 4 )
 
 [node name="Player1" parent="ScoreContainer" instance=ExtResource( 5 )]
-margin_left = 0.425
 margin_top = 6.0
-margin_right = 233.425
+margin_right = 233.0
 margin_bottom = 14.0
 
 [node name="Player2" parent="ScoreContainer" instance=ExtResource( 5 )]

@@ -1,14 +1,15 @@
 extends VBoxContainer
 
 var player_containers = {}
+var high_score_spot_data = null
+var high_score_spot_node = null
 
 func _ready():
-	var high_score_spot = null
 	for score in Global.score_data:
 		if Global.highscore > score[2]:
 			print(Global.highscore)
-			high_score_spot = score
-			print(high_score_spot)
+			high_score_spot_data = score
+			print(high_score_spot_data)
 			break
 			
 	var i = 0
@@ -22,12 +23,15 @@ func _ready():
 			child.name_label.text = Global.score_data[i][1]
 			child.score_label.text = str(Global.score_data[i][2])
 			
-			if high_score_spot != null:
-				if high_score_spot == Global.score_data[i]:
+			if high_score_spot_data != null:
+				if high_score_spot_data == Global.score_data[i]:
 					child.flash()
-					print(child)
+					child.score_label.text = str(Global.highscore)
+					high_score_spot_node = child
 			
 			i += 1
 
 func _updated_text(text_input):
 	print(text_input)
+	if high_score_spot_node != null:
+		high_score_spot_node.update_text(text_input)
