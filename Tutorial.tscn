@@ -1,24 +1,16 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Font3.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Font1.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://points_pivot.tscn" type="PackedScene" id=3]
 [ext_resource path="res://oxygen_bar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_over.tscn" type="PackedScene" id=5]
 [ext_resource path="res://w_key.png" type="Texture" id=6]
+[ext_resource path="res://water_background_environment.tscn" type="PackedScene" id=7]
 [ext_resource path="res://PeopleCount.tscn" type="PackedScene" id=8]
 [ext_resource path="res://a_key.png" type="Texture" id=9]
 [ext_resource path="res://d_key.png" type="Texture" id=10]
 [ext_resource path="res://s_key.png" type="Texture" id=11]
-[ext_resource path="res://shore_line_3.png" type="Texture" id=13]
-[ext_resource path="res://dark_water_1.png" type="Texture" id=14]
-[ext_resource path="res://dark_water_2.png" type="Texture" id=15]
-[ext_resource path="res://SandBottom.png" type="Texture" id=16]
-[ext_resource path="res://PointsLabel.gd" type="Script" id=17]
-[ext_resource path="res://shore_line_2.png" type="Texture" id=18]
-[ext_resource path="res://WaterShader.tres" type="Material" id=19]
-[ext_resource path="res://shore_line.png" type="Texture" id=20]
-[ext_resource path="res://GameOver.gd" type="Script" id=21]
-[ext_resource path="res://PointsPivot.gd" type="Script" id=22]
 [ext_resource path="res://space_key.png" type="Texture" id=23]
 [ext_resource path="res://arrow_right_key.png" type="Texture" id=24]
 [ext_resource path="res://arrow_left_key.png" type="Texture" id=25]
@@ -31,47 +23,6 @@
 [ext_resource path="res://a_button.png" type="Texture" id=32]
 [ext_resource path="res://tutorial_text.gd" type="Script" id=33]
 [ext_resource path="res://tutorial_people_spawner.gd" type="Script" id=34]
-
-[sub_resource type="CubeMesh" id=2]
-size = Vector3( 400, 4, 1 )
-subdivide_width = 8
-subdivide_height = 1
-
-[sub_resource type="CubeMesh" id=3]
-size = Vector3( 400, 35, 1 )
-subdivide_width = 8
-subdivide_height = 1
-
-[sub_resource type="CubeMesh" id=4]
-size = Vector3( 400, 170, 1 )
-subdivide_width = 8
-subdivide_height = 1
-
-[sub_resource type="CubeMesh" id=5]
-size = Vector3( 400, 80, 1 )
-subdivide_width = 8
-subdivide_height = 1
-
-[sub_resource type="CubeMesh" id=6]
-size = Vector3( 400, 130, 1 )
-subdivide_width = 8
-subdivide_height = 1
-
-[sub_resource type="DynamicFont" id=7]
-size = 10
-outline_color = Color( 0.12549, 0.0823529, 0.2, 1 )
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=9]
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=10]
-size = 8
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=11]
-size = 8
-font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=12]
 size = 5
@@ -164,54 +115,7 @@ hframes = 2
 
 [node name="Tween" type="Tween" parent="Controls"]
 
-[node name="Environment" type="Node2D" parent="."]
-
-[node name="MeshInstance2D4" type="MeshInstance2D" parent="Environment"]
-material = ExtResource( 19 )
-position = Vector2( 117.375, 43 )
-scale = Vector2( 0.75, 1 )
-z_index = 10
-mesh = SubResource( 2 )
-texture = ExtResource( 20 )
-
-[node name="MeshInstance2D5" type="MeshInstance2D" parent="Environment"]
-material = ExtResource( 19 )
-position = Vector2( 117.375, 59 )
-scale = Vector2( 0.75, 1 )
-z_index = -11
-z_as_relative = false
-mesh = SubResource( 3 )
-texture = ExtResource( 18 )
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Environment"]
-material = ExtResource( 19 )
-position = Vector2( 117.375, 129 )
-scale = Vector2( 0.75, 1 )
-z_index = -12
-mesh = SubResource( 4 )
-texture = ExtResource( 13 )
-
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="Environment"]
-material = ExtResource( 19 )
-position = Vector2( 117.375, 102 )
-scale = Vector2( 0.75, 1 )
-z_index = -13
-mesh = SubResource( 5 )
-texture = ExtResource( 14 )
-
-[node name="MeshInstance2D3" type="MeshInstance2D" parent="Environment"]
-material = ExtResource( 19 )
-position = Vector2( 117.375, 147 )
-scale = Vector2( 0.75, 1 )
-z_index = -14
-mesh = SubResource( 6 )
-texture = ExtResource( 15 )
-
-[node name="Ground" type="Sprite" parent="Environment"]
-modulate = Color( 0.145098, 0.141176, 0.266667, 1 )
-position = Vector2( 126, 211 )
-z_index = 10
-texture = ExtResource( 16 )
+[node name="Environment" parent="." instance=ExtResource( 7 )]
 
 [node name="TutorialPeopleSpawner" type="Node" parent="."]
 script = ExtResource( 34 )
@@ -239,88 +143,13 @@ z_index = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="PointsPivot" type="Node2D" parent="UserInterface/Control"]
+[node name="PointsPivot" parent="UserInterface/Control" instance=ExtResource( 3 )]
 visible = false
-position = Vector2( 128, 10 )
-script = ExtResource( 22 )
-
-[node name="Label" type="Label" parent="UserInterface/Control/PointsPivot"]
-margin_left = -42.0
-margin_top = -8.0
-margin_right = 42.0
-margin_bottom = 8.0
-custom_colors/font_color_shadow = Color( 0.12549, 0.0823529, 0.2, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 7 )
-text = "100"
-align = 1
-script = ExtResource( 17 )
 
 [node name="OxygenBarPivot" parent="UserInterface/Control" instance=ExtResource( 4 )]
 visible = false
 
-[node name="GameOver" type="Control" parent="UserInterface/Control"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 21 )
-
-[node name="ColorRect" type="ColorRect" parent="UserInterface/Control/GameOver"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.145098, 0.141176, 0.266667, 1 )
-
-[node name="GameOverText" type="Label" parent="UserInterface/Control/GameOver"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -128.0
-margin_top = -29.0
-margin_right = 128.0
-margin_bottom = -13.0
-custom_fonts/font = SubResource( 9 )
-text = "Game Over!"
-align = 1
-valign = 1
-
-[node name="CurrentScore" type="Label" parent="UserInterface/Control/GameOver"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -128.0
-margin_top = 10.0
-margin_right = 128.0
-margin_bottom = 26.0
-custom_fonts/font = SubResource( 10 )
-text = "Score 100"
-align = 1
-valign = 1
-
-[node name="HighScore" type="Label" parent="UserInterface/Control/GameOver"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -128.0
-margin_top = 27.0
-margin_right = 128.0
-margin_bottom = 43.0
-custom_fonts/font = SubResource( 11 )
-text = "HighScore 1000"
-align = 1
-valign = 1
-
-[node name="RestartTimer" type="Timer" parent="UserInterface/Control/GameOver"]
-wait_time = 0.75
-one_shot = true
-
-[node name="FadeTimer" type="Timer" parent="UserInterface/Control/GameOver"]
-wait_time = 0.3
-one_shot = true
+[node name="GameOver" parent="UserInterface/Control" instance=ExtResource( 5 )]
 
 [node name="TutorialText" type="Control" parent="UserInterface"]
 anchor_right = 1.0
@@ -349,6 +178,4 @@ one_shot = true
 
 [connection signal="tween_completed" from="Controls/Tween" to="Controls" method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="TutorialPeopleSpawner/SpawnTime" to="TutorialPeopleSpawner" method="_on_SpawnTime_timeout"]
-[connection signal="timeout" from="UserInterface/Control/GameOver/RestartTimer" to="UserInterface/Control/GameOver" method="_on_RestartTimer_timeout"]
-[connection signal="timeout" from="UserInterface/Control/GameOver/FadeTimer" to="UserInterface/Control/GameOver" method="_on_FadeTimer_timeout"]
 [connection signal="timeout" from="UserInterface/TutorialText/FinishTextTimer" to="UserInterface/TutorialText" method="_on_FinishTextTimer_timeout"]

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://letter_box.tscn" type="PackedScene" id=1]
+[ext_resource path="res://finish_ui_box.png" type="Texture" id=2]
 [ext_resource path="res://high_score_screen.gd" type="Script" id=3]
 [ext_resource path="res://score_container.gd" type="Script" id=4]
 [ext_resource path="res://player_score_value_container.tscn" type="PackedScene" id=5]
+[ext_resource path="res://finish_button.gd" type="Script" id=8]
 
 [node name="HighScoreScreen" type="Control"]
 anchor_right = 1.0
@@ -18,45 +20,47 @@ margin_top = -42.0
 alignment = 1
 
 [node name="LetterSelectBox1" parent="TextInputField" instance=ExtResource( 1 )]
-margin_left = 85.0
-margin_right = 111.0
+margin_left = 70.0
+margin_right = 96.0
 
 [node name="LetterSelectBox2" parent="TextInputField" instance=ExtResource( 1 )]
-margin_left = 115.0
-margin_right = 141.0
+margin_left = 100.0
+margin_right = 126.0
 
 [node name="LetterSelectBox3" parent="TextInputField" instance=ExtResource( 1 )]
-margin_left = 145.0
-margin_right = 171.0
+margin_left = 130.0
+margin_right = 156.0
+
+[node name="FinishButton" type="TextureRect" parent="TextInputField"]
+margin_left = 160.0
+margin_right = 186.0
+margin_bottom = 42.0
+texture = ExtResource( 2 )
+script = ExtResource( 8 )
 
 [node name="ScoreContainer" type="VBoxContainer" parent="."]
 margin_top = 5.0
-margin_right = 233.0
+margin_right = 256.0
 margin_bottom = 73.0
 alignment = 1
 script = ExtResource( 4 )
 
 [node name="Player1" parent="ScoreContainer" instance=ExtResource( 5 )]
 margin_top = 6.0
-margin_right = 233.0
 margin_bottom = 14.0
 
 [node name="Player2" parent="ScoreContainer" instance=ExtResource( 5 )]
 margin_top = 18.0
-margin_right = 233.0
 margin_bottom = 26.0
 
 [node name="Player3" parent="ScoreContainer" instance=ExtResource( 5 )]
 margin_top = 30.0
-margin_right = 233.0
 margin_bottom = 38.0
 
 [node name="Player4" parent="ScoreContainer" instance=ExtResource( 5 )]
 margin_top = 42.0
-margin_right = 233.0
 margin_bottom = 50.0
 
 [node name="Player5" parent="ScoreContainer" instance=ExtResource( 5 )]
 margin_top = 54.0
-margin_right = 233.0
 margin_bottom = 62.0
