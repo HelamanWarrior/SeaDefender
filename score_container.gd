@@ -32,6 +32,5 @@ func _ready():
 			i += 1
 
 func _updated_text(text_input):
-	print(text_input)
 	if high_score_spot_node != null:
 		high_score_spot_node.update_text(text_input)

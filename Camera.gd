@@ -13,6 +13,8 @@ onready var target_location = global_position
 
 func _ready():
 	GameEvent.connect("camera_shake", self, "init_camera_shake")
+	
+	Global.camera = self
 
 func _physics_process(delta):
 	if is_instance_valid(Global.player):
@@ -58,3 +60,6 @@ func get_noise(noise_seed, time) -> float:
 	n.persistence = 0.8
 	
 	return n.get_noise_1d(time)
+
+func _exit_tree():
+	Global.camera = null

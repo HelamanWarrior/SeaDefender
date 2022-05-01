@@ -1,17 +1,14 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Font3.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Font1.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://OxygenBar.png" type="Texture" id=4]
-[ext_resource path="res://OxygenBarUnder.png" type="Texture" id=5]
+[ext_resource path="res://oxygen_bar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://w_key.png" type="Texture" id=6]
-[ext_resource path="res://OxygenBarPivot.gd" type="Script" id=7]
 [ext_resource path="res://PeopleCount.tscn" type="PackedScene" id=8]
 [ext_resource path="res://a_key.png" type="Texture" id=9]
 [ext_resource path="res://d_key.png" type="Texture" id=10]
 [ext_resource path="res://s_key.png" type="Texture" id=11]
-[ext_resource path="res://OxygenBar.gd" type="Script" id=12]
 [ext_resource path="res://shore_line_3.png" type="Texture" id=13]
 [ext_resource path="res://dark_water_1.png" type="Texture" id=14]
 [ext_resource path="res://dark_water_2.png" type="Texture" id=15]
@@ -64,11 +61,6 @@ subdivide_height = 1
 size = 10
 outline_color = Color( 0.12549, 0.0823529, 0.2, 1 )
 font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=8]
-size = 8
-outline_color = Color( 0.12549, 0.0823529, 0.2, 1 )
-font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 3 )
@@ -266,52 +258,8 @@ text = "100"
 align = 1
 script = ExtResource( 17 )
 
-[node name="OxygenBarPivot" type="Node2D" parent="UserInterface/Control"]
+[node name="OxygenBarPivot" parent="UserInterface/Control" instance=ExtResource( 4 )]
 visible = false
-position = Vector2( 128, 128 )
-script = ExtResource( 7 )
-
-[node name="Bar" type="TextureProgress" parent="UserInterface/Control/OxygenBarPivot"]
-margin_left = -50.0
-margin_top = -6.0
-margin_right = 50.0
-margin_bottom = 3.0
-rect_min_size = Vector2( 100, 0 )
-value = 100.0
-texture_under = ExtResource( 5 )
-texture_progress = ExtResource( 4 )
-nine_patch_stretch = true
-stretch_margin_left = 8
-stretch_margin_right = 4
-script = ExtResource( 12 )
-
-[node name="FlashTimer" type="Timer" parent="UserInterface/Control/OxygenBarPivot"]
-wait_time = 0.1
-one_shot = true
-
-[node name="OxygenLabel" type="Label" parent="UserInterface/Control/OxygenBarPivot"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -24.0
-margin_top = 1.0
-margin_right = 24.0
-margin_bottom = 9.0
-custom_colors/font_color_shadow = Color( 0.12549, 0.0823529, 0.2, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 8 )
-text = "oxygen"
-align = 1
-
-[node name="ColorRect" type="ColorRect" parent="UserInterface/Control/OxygenBarPivot/OxygenLabel"]
-show_behind_parent = true
-margin_left = 35.0
-margin_top = 2.0
-margin_right = 41.0
-margin_bottom = 5.0
-color = Color( 0.12549, 0.0823529, 0.2, 1 )
 
 [node name="GameOver" type="Control" parent="UserInterface/Control"]
 visible = false
@@ -401,7 +349,6 @@ one_shot = true
 
 [connection signal="tween_completed" from="Controls/Tween" to="Controls" method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="TutorialPeopleSpawner/SpawnTime" to="TutorialPeopleSpawner" method="_on_SpawnTime_timeout"]
-[connection signal="timeout" from="UserInterface/Control/OxygenBarPivot/FlashTimer" to="UserInterface/Control/OxygenBarPivot" method="_on_FlashTimer_timeout"]
 [connection signal="timeout" from="UserInterface/Control/GameOver/RestartTimer" to="UserInterface/Control/GameOver" method="_on_RestartTimer_timeout"]
 [connection signal="timeout" from="UserInterface/Control/GameOver/FadeTimer" to="UserInterface/Control/GameOver" method="_on_FadeTimer_timeout"]
 [connection signal="timeout" from="UserInterface/TutorialText/FinishTextTimer" to="UserInterface/TutorialText" method="_on_FinishTextTimer_timeout"]
