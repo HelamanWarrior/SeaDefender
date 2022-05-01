@@ -28,3 +28,6 @@ func _ready():
 					print(child)
 			
 			i += 1
+
+func _updated_text(text_input):
+	print(text_input)
