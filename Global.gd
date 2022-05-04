@@ -8,9 +8,10 @@ var player = null
 var people_container = null
 
 var last_play_score = 0
-var highscore = 1600 # change this later
+var highscore = 0
 
-var mute_sounds = true # change this later
+var play_tutorial = true
+var mute_sounds = false
 var score_data = [["1st", "JOD", 1765], ["2nd", "TOD", 1650], ["3rd", "AAA", 1400], ["4th", "POO", 1345], ["5th", "ZAC", 1265]]
 
 var difficulty = 1

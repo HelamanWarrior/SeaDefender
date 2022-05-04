@@ -83,9 +83,9 @@ anchor_bottom = 1.0
 
 [node name="OxygenBarPivot" parent="UserInterface/Control" instance=ExtResource( 4 )]
 
-[node name="GameOver" parent="UserInterface/Control" instance=ExtResource( 2 )]
-
 [node name="CurrentLevelText" parent="UserInterface/Control" instance=ExtResource( 24 )]
+
+[node name="GameOver" parent="UserInterface/Control" instance=ExtResource( 2 )]
 
 [connection signal="timeout" from="EnemySpawner/SpawnTime" to="EnemySpawner" method="_on_SpawnTime_timeout"]
 [connection signal="timeout" from="EnemySpawner/SpawnPersonTime" to="EnemySpawner" method="_on_SpawnPersonTime_timeout"]

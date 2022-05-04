@@ -2,10 +2,12 @@ extends Button
 
 func _input(_event):
 	if Input.is_action_just_released("action"):
-		get_tree().change_scene("res://Prototype.tscn")
+		get_tree().change_scene("res://Tutorial.tscn")
 
 func _on_Play_button_down():
-	get_tree().change_scene("Prototype.tscn")
+	if Global.play_tutorial:
+		get_tree().change_scene("res://Tutorial.tscn")
+		Global.play_tutorial = false
 
 func _on_Settings_button_down():
 	get_tree().change_scene("ControlsMenu.tscn")

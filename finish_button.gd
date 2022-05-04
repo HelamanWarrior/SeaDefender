@@ -9,6 +9,9 @@ var normal_texture = preload("res://finish_ui_box.png")
 func _ready():
 	connect("focus_entered", self, "_focus_entered")
 	connect("focus_exited", self, "_focus_exited")
+	
+	yield(get_tree(), "idle_frame")
+	rect_position.y = -4
 
 func _input(event):
 	if in_focus:
@@ -19,7 +22,6 @@ func _input(event):
 
 func _focus_entered():
 	in_focus = true
-	print("AA")
 	texture = focused_texture
 
 func _focus_exited():

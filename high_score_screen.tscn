@@ -35,6 +35,7 @@ margin_right = 156.0
 margin_left = 160.0
 margin_right = 186.0
 margin_bottom = 42.0
+focus_mode = 2
 texture = ExtResource( 2 )
 script = ExtResource( 8 )
 
