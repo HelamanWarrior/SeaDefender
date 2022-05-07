@@ -1,5 +1,7 @@
 extends TextureRect
 
+signal pressed
+
 var in_focus = false
 
 var pressed_texture = preload("res://finish_ui_box_pressed.png")
@@ -15,6 +17,9 @@ func _ready():
 
 func _input(event):
 	if in_focus:
+		if Input.is_action_just_released("action"):
+			emit_signal("pressed")
+		
 		if Input.is_action_pressed("action"):
 			texture = pressed_texture
 		else:

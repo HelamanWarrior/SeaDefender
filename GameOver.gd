@@ -32,5 +32,6 @@ func _on_RestartTimer_timeout():
 	allow_restart = true
 
 func _on_FadeTimer_timeout():
-	fade = true
+	get_tree().change_scene("res://high_score_screen.tscn")
+	
 	restart_timer.start()
