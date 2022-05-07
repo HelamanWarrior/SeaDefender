@@ -29,7 +29,7 @@ func _ready():
 		letter_box.connect("focus_entered", self, "letter_focus_entered_" + str(int(letter_box.name)))
 	
 	for score in Global.score_data:
-		if Global.last_play_score > score[2]:
+		if Global.last_play_score > score[1]:
 			fill_out_high_scores = true
 			break
 	
@@ -89,8 +89,8 @@ func _finish_button_pressed():
 	for i in range(score_container.get_children().size() - 1):
 		var score_node = score_container.get_children()[i]
 		# skip index zero that's just ranking which never changes
-		Global.score_data[i][1] = score_node.name_label.text # index 1 is name
-		Global.score_data[i][2] = int(score_node.score_label.text) # index 2 is the score
+		Global.score_data[i][0] = score_node.name_label.text # index 0 is name
+		Global.score_data[i][1] = int(score_node.score_label.text) # index 1 is the score
 		
 	# switch back to the main game
 	print(Global.score_data)

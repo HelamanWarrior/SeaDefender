@@ -7,12 +7,12 @@ const freeze_ms = 30
 var player = null
 var people_container = null
 
-var last_play_score = 0
-var highscore = 0 # change this later
+var last_play_score = 1900
+var highscore = 0
 
 var play_tutorial = true
 var mute_sounds = true # change this later
-var score_data = [["1st", "JOD", 1765], ["2nd", "TOD", 1650], ["3rd", "AAA", 1400], ["4th", "POO", 1345], ["5th", "ZAC", 1265]]
+var score_data = [["JOD", 1765], ["TOD", 1650], ["AAA", 1400], ["POO", 1345], ["ZAC", 1265]]
 
 var difficulty = 1
 var difficulty_steps = 0
