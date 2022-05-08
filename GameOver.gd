@@ -32,6 +32,11 @@ func _on_RestartTimer_timeout():
 	allow_restart = true
 
 func _on_FadeTimer_timeout():
-	get_tree().change_scene("res://high_score_screen.tscn")
+	if get_tree().current_scene.name != "Tutorial":
+		get_tree().change_scene("res://high_score_screen.tscn")
+	else:
+		Global.difficulty = 1
+		Global.difficulty_steps = 0
+		get_tree().reload_current_scene()
 	
 	restart_timer.start()

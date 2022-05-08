@@ -1,6 +1,6 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://Font1.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Font1.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://MenuTest1.tres" type="Theme" id=2]
 [ext_resource path="res://title.png" type="Texture" id=3]
 [ext_resource path="res://ChangeScreen.gd" type="Script" id=4]
@@ -11,6 +11,11 @@
 [ext_resource path="res://dark_water_1.png" type="Texture" id=9]
 [ext_resource path="res://shore_line.png" type="Texture" id=10]
 [ext_resource path="res://WaterShader.tres" type="Material" id=11]
+
+[sub_resource type="DynamicFont" id=10]
+size = 8
+outline_color = Color( 0.12549, 0.0823529, 0.2, 1 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -136,7 +141,7 @@ theme = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.129412, 0.0823529, 0.196078, 1 )
 custom_colors/font_color_pressed = Color( 0.133333, 0.0941176, 0.2, 1 )
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = SubResource( 10 )
 text = "Play"
 script = ExtResource( 4 )
 

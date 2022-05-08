@@ -11,8 +11,8 @@ var last_play_score = 0
 var highscore = 0
 
 var play_tutorial = true
-var mute_sounds = true # change this later
-var score_data = [["JOD", 1765], ["TOD", 1650], ["AAA", 1400], ["POO", 1345], ["ZAC", 1265]]
+var mute_sounds = false
+var score_data = [["JOD", 4350], ["TOD", 3500], ["AAA", 2700], ["POO", 2000], ["ZAC", 1600]]
 
 var difficulty = 1
 var difficulty_steps = 0
