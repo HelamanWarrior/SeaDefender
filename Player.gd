@@ -7,6 +7,7 @@ var current_state = states.DEFAULT
 var speed = Vector2(125, 90)
 var acc = 400
 var rotation_strength = 15
+var lives = 3
 
 var movement_input = Vector2()
 var velocity = Vector2()

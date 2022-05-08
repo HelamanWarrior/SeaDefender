@@ -134,6 +134,8 @@ func _process(delta):
 		16: 
 			uncover_text()
 			if main_text.percent_visible == 1:
+				Global.difficulty = 1
+				Global.difficulty_steps = 0
 				get_tree().change_scene("res://Prototype.tscn")
 
 func uncover_text():
