@@ -7,7 +7,7 @@ const freeze_ms = 30
 var player = null
 var people_container = null
 
-var last_play_score = 1900
+var last_play_score = 0
 var highscore = 0
 
 var play_tutorial = true
