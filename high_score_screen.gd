@@ -37,17 +37,15 @@ func _ready():
 		game_over_score_text.text = "Score " + str(Global.last_play_score)
 		game_over_high_score_text.text = "Highscore " + str(Global.highscore)
 		score_container.game_over = true
-		print(score_container.game_over)
 		
 		restart_timer.start()
 		text_input_field.hide()
 		game_over.show()
+		score_container.update_current_scoreboard_values()
 	else:
+		score_container.update_current_scoreboard_values()
 		letter_select_boxes[0].grab_focus()
 		emit_signal("updated_text", "aaa") # reset current text
-	
-	# update the score value on the corresponding row the player's score will go on
-	score_container.update_current_scoreboard_values()
 
 func _input(_event):
 	if current_letter_box_focus != 0 and fill_out_high_scores:

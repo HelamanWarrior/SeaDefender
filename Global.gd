@@ -12,7 +12,7 @@ var highscore = 0
 
 var play_tutorial = true
 var mute_sounds = true
-var score_data = [["JOD", 5000], ["TOD", 3500], ["AAA", 2700], ["POO", 1600], ["ZAC", 700]]
+var score_data = [["JOD", 5000], ["TOD", 3500], ["HAC", 2700], ["POO", 1600], ["ZAC", 700]]
 
 var difficulty = 1
 var difficulty_steps = 0
@@ -35,7 +35,8 @@ func _input(_event):
 func numb_collected_people_set(new_value):
 	numb_collected_people = clamp(new_value, 0, 7)
 	
-	if numb_collected_people == 7:
+	if new_value >= 7:
+		print("Signal emitted")
 		GameEvent.emit_signal("full_crew")
 	
 	GameEvent.emit_signal("update_person_count")

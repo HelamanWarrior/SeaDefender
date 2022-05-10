@@ -157,7 +157,6 @@ anims/idle = SubResource( 4 )
 [node name="Hitbox" type="Area2D" parent="." groups=["Enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-visible = false
 position = Vector2( 0, 0.5 )
 shape = SubResource( 1 )
 

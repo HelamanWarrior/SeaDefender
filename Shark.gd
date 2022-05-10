@@ -14,7 +14,7 @@ func movement(delta):
 	update_sprite_facing()
 	
 	velocity.y = sin(global_position.x * 0.15 + random_offset) * 0.5
-	global_position += velocity * speed * Global.difficulty * delta
+	global_position += velocity * speed * delta
 
 func update_sprite_facing():
 	flip_h = velocity.x < 0

@@ -93,7 +93,7 @@ func movement(delta) -> void:
 	
 	movement_input = movement_input.normalized()
 	
-	velocity = lerp(velocity, movement_input * speed * Global.difficulty, 0.25)
+	velocity = lerp(velocity, movement_input * speed, 0.25)
 	
 	global_position += velocity * delta
 
@@ -183,8 +183,10 @@ func oxygen_refuel():
 		GameEvent.emit_signal("pause_enemies", false)
 		
 		if full_crew:
+			print("Full crew")
 			Global.difficulty *= 1.1
 			GameEvent.emit_signal("increase_level")
+			full_crew = false
 		
 		SoundManager.play_sound(SoundManager.oxygen_full_alert, rand_range(0.8, 1.2))
 		

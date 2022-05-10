@@ -4,7 +4,7 @@
 [ext_resource path="res://Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8.5, 4.5 )
+extents = Vector2( 6, 3 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -47,8 +47,7 @@ script = ExtResource( 2 )
 [node name="Hitbox" type="Area2D" parent="." groups=["Player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-visible = false
-position = Vector2( -0.5, 2.5 )
+position = Vector2( 1, 0 )
 shape = SubResource( 1 )
 
 [node name="ShootPoint" type="Position2D" parent="."]

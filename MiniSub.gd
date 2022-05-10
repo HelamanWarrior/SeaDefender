@@ -22,7 +22,7 @@ func _process(delta):
 func movement(delta):
 	update_sprite_facing()
 	
-	global_position += velocity * speed * Global.difficulty * delta
+	global_position += velocity * speed * delta
 
 func _on_ShootTimer_timeout():
 	if current_state == states.DEFAULT:
