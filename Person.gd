@@ -42,7 +42,7 @@ func pause(pause):
 		current_state = states.DEFAULT
 
 func update_applied_speed():
-	applied_speed = speed * Global.difficulty
+	applied_speed = speed
 
 func _on_Hitbox_area_entered(area):
 	if area.is_in_group("Player"):
