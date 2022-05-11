@@ -11,7 +11,7 @@ var last_play_score = 0
 var highscore = 0
 
 var play_tutorial = true
-var mute_sounds = true
+var mute_sounds = false
 var score_data = [["JOD", 5000], ["TOD", 3500], ["HAC", 2700], ["POO", 1600], ["ZAC", 700]]
 
 var save_game = SaveGame.new()

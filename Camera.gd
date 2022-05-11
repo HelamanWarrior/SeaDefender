@@ -33,7 +33,7 @@ func init_camera_shake(amount):
 func process_shake(center, angle, delta) -> void:
 	shake = stress * stress
 
-	rotation_degrees = angle + (max_roll * shake *  get_noise(randi(), delta))
+	rotation_degrees = angle + (max_roll * shake * get_noise(randi(), delta))
 	
 	var offset = Vector2()
 	offset.x = (max_offset * shake * get_noise(randi(), delta + 1.0))
