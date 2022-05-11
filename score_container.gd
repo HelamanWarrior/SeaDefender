@@ -10,14 +10,12 @@ func update_current_scoreboard_values():
 	for score in Global.score_data:
 		if Global.last_play_score > score[1]:
 			high_score_spot_data = score
-			print(high_score_spot_data)
 			break
 	
 	Global.score_data.resize(6)
 	Global.score_data.insert(Global.score_data.find(high_score_spot_data), ["aaa", Global.last_play_score])
 	Global.score_data.resize(5)
 	high_score_spot_data = Global.score_data[Global.score_data.find(high_score_spot_data) - 1]
-	print(Global.score_data)
 	
 	var i = 0
 	for child in get_children():
@@ -34,7 +32,6 @@ func update_current_scoreboard_values():
 			if !game_over:
 				if high_score_spot_data != null:
 					if high_score_spot_data == Global.score_data[i]:
-						print(Global.score_data[i])
 						child.flash()
 						child.score_label.text = str(Global.last_play_score)
 						high_score_spot_node = child

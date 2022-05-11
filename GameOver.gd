@@ -32,6 +32,7 @@ func _on_RestartTimer_timeout():
 	allow_restart = true
 
 func _on_FadeTimer_timeout():
+	GameEvent.emit_signal("save_game")
 	if get_tree().current_scene.name != "Tutorial":
 		get_tree().change_scene("res://high_score_screen.tscn")
 	else:

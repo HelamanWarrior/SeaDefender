@@ -136,6 +136,8 @@ func _process(delta):
 			if main_text.percent_visible == 1:
 				Global.difficulty = 1
 				Global.difficulty_steps = 0
+				
+				GameEvent.emit_signal("save_game")
 				get_tree().change_scene("res://Prototype.tscn")
 
 func uncover_text():

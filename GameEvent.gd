@@ -14,6 +14,8 @@ signal full_crew()
 signal destroy_crew_ui()
 signal increase_level()
 
+signal save_game()
+
 # user interface visibility
 signal toggle_points_visibility(visible)
 signal toggle_crew_visiblity(visible)

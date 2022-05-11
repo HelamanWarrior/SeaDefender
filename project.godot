@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "SaveGame",
+"language": "GDScript",
+"path": "res://save_game.gd"
+} ]
+_global_script_class_icons={
+"SaveGame": ""
+}
+
 [application]
 
 config/name="SeaDefender"

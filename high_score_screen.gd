@@ -92,9 +92,11 @@ func _finish_button_pressed():
 		Global.score_data[i][1] = int(score_node.score_label.text) # index 1 is the score
 		
 	# switch back to the main game
-	print(Global.score_data)
 	Global.difficulty = 1
 	Global.difficulty_steps = 0
+	
+	GameEvent.emit_signal("save_game")
+	
 	get_tree().change_scene("res://Prototype.tscn")
 
 func _process(_delta):

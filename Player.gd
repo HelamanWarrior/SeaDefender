@@ -183,7 +183,6 @@ func oxygen_refuel():
 		GameEvent.emit_signal("pause_enemies", false)
 		
 		if full_crew:
-			print("Full crew")
 			Global.difficulty *= 1.1
 			GameEvent.emit_signal("increase_level")
 			full_crew = false
