@@ -77,7 +77,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
 
 [node name="CurrentLevelText" type="Control"]
@@ -88,6 +88,7 @@ script = ExtResource( 2 )
 [node name="Pivot" type="Node2D" parent="."]
 position = Vector2( 128, 72 )
 rotation = -0.174533
+scale = Vector2( 1e-05, 1e-05 )
 z_index = 5
 
 [node name="CurrentLevel" type="Label" parent="Pivot"]
