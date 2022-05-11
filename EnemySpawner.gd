@@ -6,6 +6,8 @@ var current_enemy = null
 
 var shark = preload("res://Shark.tscn")
 var mini_sub = preload("res://MiniSub.tscn")
+var lazer_shark = preload("res://lazer_shark.tscn")
+
 var person = preload("res://Person.tscn")
 
 onready var spawn_person_timer = $SpawnPersonTime
@@ -53,9 +55,17 @@ func spawn_enemy_algo(direction_node):
 		current_spawned_points.append(node_numb)
 
 func change_enemy_random():
-	if Global.difficulty > 1.2:
+	if Global.difficulty_steps >= 1: # start spawning at level 2
 		if round(rand_range(1, 3)) == 1:
 			current_enemy = mini_sub
+			return
+	
+	if Global.difficulty_steps >= 2: # start spawning at level 3
+		if round(rand_range(1, 4)) == 1:
+			current_enemy = lazer_shark
+			return
+	
+	current_enemy = shark
 
 func _on_SpawnPersonTime_timeout():
 	if Global.numb_collected_people < 7 and is_instance_valid(Global.people_container) and can_spawn:

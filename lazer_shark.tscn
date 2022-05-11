@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://lazer_shark_pieces.png" type="Texture" id=1]
-[ext_resource path="res://MiniSub.gd" type="Script" id=2]
+[ext_resource path="res://lazer_shark.gd" type="Script" id=1]
 [ext_resource path="res://lazer_shark_hit.png" type="Texture" id=4]
 [ext_resource path="res://lazer_shark.png" type="Texture" id=5]
 
@@ -146,11 +145,9 @@ extents = Vector2( 7.5, 4 )
 [node name="LazerShark" type="Sprite"]
 texture = ExtResource( 5 )
 hframes = 4
-script = ExtResource( 2 )
-speed = 35
-max_hp = 3
-points = 75
-piece_texture = ExtResource( 1 )
+script = ExtResource( 1 )
+max_hp = 2
+points = 60
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -171,9 +168,11 @@ position = Vector2( 0, -1.19209e-07 )
 scale = Vector2( 0.8, 0.5 )
 
 [node name="ShootPoint" type="Position2D" parent="."]
-position = Vector2( 10, 1 )
+position = Vector2( 13, 1 )
 
 [node name="ShootTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
 autostart = true
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
