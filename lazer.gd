@@ -12,6 +12,10 @@ func _process(delta):
 	start.rotation_degrees = lerp(start.rotation_degrees, target_rotation, 0.3)
 	start.position = lerp(start.position, target_location, 0.3)
 	
+	if raycast.is_colliding() and raycast.get_collider() != null:
+		if raycast.get_collider().is_in_group("Player"):
+			GameEvent.emit_signal("kill_player")
+	
 	if destroy:
 		scale.y = lerp(scale.y, 0, 0.2)
 		if scale.y < 0.05:

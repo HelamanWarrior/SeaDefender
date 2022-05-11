@@ -171,7 +171,7 @@ scale = Vector2( 0.8, 0.5 )
 position = Vector2( 13, 1 )
 
 [node name="ShootTimer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 

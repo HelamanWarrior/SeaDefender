@@ -15,6 +15,8 @@ script = ExtResource( 1 )
 visible = false
 enabled = true
 cast_to = Vector2( 400, 0 )
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Outline" type="Sprite" parent="."]
 modulate = Color( 0.12549, 0.0823529, 0.2, 1 )
