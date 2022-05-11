@@ -8,6 +8,8 @@ func _on_Play_button_down():
 	if Global.play_tutorial:
 		get_tree().change_scene("res://Tutorial.tscn")
 		Global.play_tutorial = false
+	else:
+		get_tree().change_scene("res://Prototype.tscn")
 
 func _on_Settings_button_down():
 	get_tree().change_scene("ControlsMenu.tscn")
