@@ -104,6 +104,7 @@ func _process(delta):
 		10: # collect full crews of people
 			uncover_text()
 			if Global.numb_collected_people >= 7:
+				print("AA")
 				if main_text.percent_visible < 1:
 					call_finish_text_timer()
 				else:
@@ -136,6 +137,7 @@ func _process(delta):
 			if main_text.percent_visible == 1:
 				Global.difficulty = 1
 				Global.difficulty_steps = 0
+				Global.numb_collected_people = 0
 				Global.play_tutorial = false
 				
 				GameEvent.emit_signal("save_game")
@@ -173,7 +175,7 @@ func _on_FinishTextTimer_timeout():
 		8:
 			GameEvent.emit_signal("spawn_tutorial_people")
 			#Global.instance_node(person, Vector2(-30, 85))
-		10:
+		9:
 			GameEvent.emit_signal("toggle_crew_visiblity", true)
 
 func all_controls_pressed():

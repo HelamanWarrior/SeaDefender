@@ -15,7 +15,7 @@ func _ready():
 	GameEvent.connect("camera_shake", self, "init_camera_shake")
 
 func _physics_process(delta):
-	if is_instance_valid(Global.player):
+	if Global.player != null:
 		global_position = lerp(global_position, target_location, 0.15)
 		global_position.y = clamp(global_position.y, 70, 145)
 		
