@@ -3,6 +3,8 @@
 Yes, very messy project indeed, I do know folders exist.
 But I had to crunch deadlines, no time to organize, you know?
 
+Also please note this project is aimed for Godot 3.0.
+
 ![sea-quest-remake-title](misc/sea-quest-remake-title.gif)
 
 Anyways, if you wanna readup more on this crazy project and it's future, you can read my [blog post here.](https://plug-world.com/posts/seadefender/)
